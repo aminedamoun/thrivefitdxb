@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>About Us - ThriveFit DXB | Meet Our Elite Coaching Team</title>
+  <meta name="description" content="Meet the ThriveFit DXB team in Dubai. Discover our coaching philosophy, elite trainers, and results-driven personal training for fat loss, strength, and transformation." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://thrivefitdxb.ae/about" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ThriveFit DXB" />
+  <meta property="og:title" content="About ThriveFit DXB | Elite Coaching Team in Dubai" />
+  <meta property="og:description" content="Meet ThriveFit DXB’s elite coaching team in Dubai. Our story, philosophy, and results-driven personal training." />
+  <meta property="og:url" content="https://thrivefitdxb.ae/about" />
+  <meta property="og:image" content="https://thrivefitdxb.ae/assets/images/og-cover.jpg" />
+  <meta property="og:locale" content="en_AE" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About ThriveFit DXB | Elite Coaching Team in Dubai" />
+  <meta name="twitter:description" content="Meet ThriveFit DXB’s elite coaching team in Dubai. Our story, philosophy, and results-driven personal training." />
+  <meta name="twitter:image" content="https://thrivefitdxb.ae/assets/images/og-cover.jpg" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="msapplication-TileColor" content="#000000" />
+
+  <!-- Performance -->
+  <link rel="preload" as="image" href="/assets/images/logo.png" fetchpriority="high" />
+  <link rel="preload" as="image" href="/assets/images/hero-about3.webp" fetchpriority="high" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <!-- Rocket scripts (kept from your file) -->
+  <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fsportcoach1836back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.10"></script>
+  <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+
+  <style>
+    /* ---------- PAGE ANIMATIONS ---------- */
+    @keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeInScale { from {opacity:0; transform:scale(0.95);} to {opacity:1; transform:scale(1);} }
+    @keyframes fadeInLeft { from {opacity:0; transform:translateX(-30px);} to {opacity:1; transform:translateX(0);} }
+    @keyframes fadeInRight { from {opacity:0; transform:translateX(30px);} to {opacity:1; transform:translateX(0);} }
+
+    .animate-on-scroll { opacity: 0; }
+
+    /* GENERAL NAV LINK RESET */
+    .nav-link {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+
+    /* GLASS NAV WHEN SCROLLING */
+    #navbar.nav-scrolled {
+      background: rgba(12,12,12,0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 22px rgba(0,0,0,.18);
+    }
+
+    /* ---------- DESKTOP DROPDOWN (FINAL VERSION) ---------- */
+    .desktop-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      width: 320px;
+      padding: 22px 28px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(20,32,60,0.95), rgba(10,15,30,0.98));
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.45);
+
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .25s ease, visibility .25s ease, transform .25s ease;
+      z-index: 99999;
+    }
+    .nav-services.show .desktop-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    .desktop-dropdown a {
+      display: block;
+      padding: 10px 0;
+      margin-bottom: 4px;
+      font-size: 15px;
+      color: #fff;
+      line-height: 1.4;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: color .2s ease, padding-left .2s ease;
+    }
+    .desktop-dropdown a:hover {
+      color: #f5d28a;
+      padding-left: 6px;
+    }
+
+    /* ---------- MOBILE MENU ---------- */
+    .tf-mobile-menu {
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: rgba(0,0,0,0.95);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      z-index: 40;
+    }
+    .tf-mobile-link {
+      padding: .5rem 0;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+    }
+    .tf-mobile-services-panel a {
+      display: block;
+      padding: .35rem 0;
+      font-size: .95rem;
+      font-weight: 500;
+    }
+    .tf-mobile-services-btn {
+      font-family: inherit !important;
+      font-size: inherit !important;
+      font-weight: inherit !important;
+      letter-spacing: inherit !important;
+      text-transform: inherit !important;
+      color: inherit !important;
+    }
+    .tf-mobile-services-btn span:first-child {
+      font-weight: inherit !important;
+    }
+
+    /* ---------- SEO LONGFORM STYLES (nice + readable) ---------- */
+    .seo-guide h2, .seo-guide h3 { line-height: 1.15; }
+    .seo-guide p { line-height: 1.8; }
+    .seo-guide .seo-card {
+      background: rgba(10, 15, 30, 0.7);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 18px;
+      padding: 18px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .seo-guide details {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    .seo-guide summary {
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .seo-guide details[open] summary { color: #f5d28a; }
+  </style>
+
+  <!-- Schema (simple + safe) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"ThriveFit DXB",
+    "url":"https://thrivefitdxb.ae/",
+    "logo":"https://thrivefitdxb.ae/assets/images/logo.png",
+    "sameAs":[
+      "https://www.instagram.com/thrivefitdxb/",
+      "https://www.facebook.com/people/Thrive-Fit-Dxb/61584039750159/",
+      "https://www.tiktok.com/@thrive.fit.dxb?lang=en-GB"
+    ]
+  }
+  </script>
+</head>
+
+<body class="bg-black text-white overflow-x-hidden">
+
+<!-- ============================================================ -->
+<!-- =========================== NAVBAR ========================== -->
+<!-- ============================================================ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <!-- LOGO -->
+      <a href="/" aria-label="Home">
+        <img
+          src="/assets/images/logo.png"
+          class="h-12 w-auto object-contain tf-logo-loading"
+          alt="ThriveFit DXB logo"
+          decoding="async"
+          fetchpriority="high"
+          data-tf-logo
+        />
+      </a>
+
+      <!-- DESKTOP NAV -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/" class="nav-link text-white hover:text-primary">HOME</a>
+        <a href="/about" class="nav-link text-gray hover:text-primary">ABOUT US</a>
+
+        <!-- SERVICES DROPDOWN -->
+        <div class="relative nav-services">
+          <button class="nav-link text-gray hover:text-primary inline-flex items-center gap-2 nav-services-btn" aria-expanded="false" aria-controls="services-dd">
+            SERVICES
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+
+          <div id="services-dd" class="desktop-dropdown" role="menu">
+            <a href="/gym-personal-training">GYM PERSONAL TRAINING</a>
+            <a href="/at-home-training">AT-HOME TRAINING</a>
+            <a href="/outdoor-training">OUTDOOR TRAINING</a>
+            <a href="/corporate-fitness">CORPORATE FITNESS</a>
+            <a href="/children-fitness">CHILDREN FITNESS</a>
+            <a href="/facility-management">FACILITY MANAGEMENT</a>
+          </div>
+        </div>
+
+        <a href="/transformation" class="nav-link text-gray hover:text-primary">TRANSFORMATION</a>
+        <a href="/career" class="nav-link text-gray hover:text-primary">CAREER</a>
+        <a href="/contact" class="nav-link text-gray hover:text-primary">CONTACT</a>
+      </div>
+
+      <!-- DESKTOP CTA -->
+      <a href="/contact" class="hidden md:block bg-primary text-black font-cta text-lg px-8 py-3 rounded-lg">START TODAY</a>
+
+      <!-- MOBILE HAMBURGER -->
+      <button class="tf-hamburger md:hidden text-white" aria-label="Open menu" aria-expanded="false" aria-controls="tf-mobile-menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="tf-mobile-menu" class="tf-mobile-menu hidden md:hidden">
+    <div class="container mx-auto px-6 py-6 flex flex-col gap-2">
+      <a href="/" class="tf-mobile-link text-white hover:text-primary">Home</a>
+      <a href="/about" class="tf-mobile-link text-gray hover:text-primary">About Us</a>
+
+      <!-- MOBILE SERVICES -->
+      <div>
+        <button class="tf-mobile-link flex items-center justify-between text-gray hover:text-primary tf-mobile-services-btn" aria-expanded="false" aria-controls="tf-mobile-services-panel">
+          <span>Services</span>
+          <span class="text-primary text-xl">+</span>
+        </button>
+
+        <div id="tf-mobile-services-panel" class="hidden pl-4 mt-1 space-y-1.5 tf-mobile-services-panel">
+          <a href="/gym-personal-training" class="text-gray hover:text-white">Gym Personal Training</a>
+          <a href="/at-home-training" class="text-gray hover:text-white">At-Home Training</a>
+          <a href="/outdoor-training" class="text-gray hover:text-white">Outdoor Training</a>
+          <a href="/corporate-fitness" class="text-gray hover:text-white">Corporate Fitness</a>
+          <a href="/children-fitness" class="text-gray hover:text-white">Children Fitness</a>
+          <a href="/facility-management" class="text-gray hover:text-white">Facility Management</a>
+        </div>
+      </div>
+
+      <a href="/transformation" class="tf-mobile-link text-gray hover:text-primary">Transformation</a>
+      <a href="/career" class="tf-mobile-link text-gray hover:text-primary">Career</a>
+      <a href="/contact" class="tf-mobile-link text-gray hover:text-primary">Contact</a>
+
+      <a href="/contact" class="bg-primary text-black font-cta text-lg px-8 py-3 rounded-lg text-center mt-3">
+        START TODAY
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- ============================ HERO =========================== -->
+<!-- ============================================================ -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
+  <!-- Background -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black z-10"></div>
+
+    <picture>
+      <source media="(max-width: 767px)" srcset="/assets/images/Thrive_Fit_234.webp" type="image/webp" />
+      <img
+        src="/assets/images/hero-about3.webp"
+        alt="ThriveFit DXB Facility Dubai"
+        class="w-full h-full object-cover"
+        width="1920"
+        height="1080"
+        loading="eager"
+        decoding="sync"
+        fetchpriority="high"
+      />
+    </picture>
+  </div>
+
+  <!-- Animated Gold Overlays -->
+  <div class="absolute inset-0 z-10" aria-hidden="true">
+    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="container mx-auto px-4 relative z-20">
+    <div class="max-w-4xl mx-auto text-center space-y-6 animate-on-scroll" data-animation="fadeInUp">
+      <div class="inline-block">
+        <span class="tier-badge">Our Story</span>
+      </div>
+
+      <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+        Welcome to <br />
+        <span class="text-gradient-gold">Thrive Fit DXB</span>
+        <br />In the Heart of Dubai
+      </h1>
+
+      <p class="text-lg md:text-xl text-gray max-w-3xl mx-auto leading-relaxed">
+        The home of premium personal training built for ambitious individuals who want more from their fitness.
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 max-w-3xl mx-auto">
+        <div class="text-center p-4 rounded-lg bg-blue-950/30 backdrop-blur-sm border border-blue-800/20">
+          <div class="text-2xl font-headline font-extrabold text-primary mb-1">30+</div>
+          <div class="text-xs text-gray">Years Combined</div>
+        </div>
+        <div class="text-center p-4 rounded-lg bg-blue-950/30 backdrop-blur-sm border border-blue-800/20">
+          <div class="text-2xl font-headline font-extrabold text-primary mb-1">500+</div>
+          <div class="text-xs text-gray">Clients Coached</div>
+        </div>
+        <div class="text-center p-4 rounded-lg bg-blue-950/30 backdrop-blur-sm border border-blue-800/20">
+          <div class="text-2xl font-headline font-extrabold text-primary mb-1">15+</div>
+          <div class="text-xs text-gray">Certifications</div>
+        </div>
+        <div class="text-center p-4 rounded-lg bg-blue-950/30 backdrop-blur-sm border border-blue-800/20">
+          <div class="text-2xl font-headline font-extrabold text-primary mb-1">98%</div>
+          <div class="text-xs text-gray">Success Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce" aria-hidden="true">
+    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- Founder Story Section -->
+<section class="py-24 bg-gradient-to-b from-black via-blue-950/20 to-black">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="relative animate-slide-up">
+          <div class="absolute -inset-4 bg-gradient-to-r from-primary/20 to-transparent rounded-2xl blur-xl" aria-hidden="true"></div>
+          <img
+            src="/assets/images/Thrive_Fit_23.december-138.webp"
+            alt="ThriveFit DXB Founders"
+            class="relative rounded-2xl shadow-elevated w-full"
+            loading="lazy"
+            decoding="async"
+            width="900"
+            height="680"
+          />
+        </div>
+
+        <div class="animate-slide-up" style="animation-delay: 0.2s;">
+          <h2 class="font-headline text-4xl md:text-5xl font-extrabold mb-6">
+            Built on <span class="text-primary">Passion &amp; Purpose</span>
+          </h2>
+          <div class="section-divider mb-8 mx-0"></div>
+
+          <div class="space-y-4 text-gray leading-relaxed">
+            <p class="text-lg">
+              Thrive Fit DXB was founded by Marko Perun, a lifelong athlete shaped by years of multi-sport training,
+              competitive basketball, and stepping on the bodybuilding stage where he earned several medals.
+              Built on discipline, resilience, and a passion for pushing limits, the brand reflects real athletic experience,
+              not trends or shortcuts.
+            </p>
+            <p>
+              We deliver structured, results-driven coaching that builds strength, confidence, and long-lasting habits.
+            </p>
+            <p>
+              <span class="text-primary font-semibold">At Thrive Fit DXB, you don’t just train — you THRIVE.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Meet the Coaches Section -->
+<section id="coaches" class="py-12 bg-gradient-to-b from-blue-950 via-blue-900/30 to-black">
+  <div class="container mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <h2 class="font-headline text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">
+        Meet Your <span class="text-primary">Elite Coaches</span>
+      </h2>
+      <div class="section-divider my-6"></div>
+      <p class="text-base text-gray">World-class expertise, personalized attention, proven results</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+      <!-- Coach: Nemanja -->
+      <div class="luxury-card group animate-scale-in" style="animation-delay: 0.4s;">
+        <div class="relative overflow-hidden rounded-2xl mb-6 h-96 border border-blue-800/30">
+          <img
+            src="/assets/images/coach/slika.webp"
+            alt="Coach Nemanja Duranovic - Fitness & Wellness Expert"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="800"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/60 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="font-headline text-3xl font-extrabold text-white mb-1">Nemanja Duranovic</h3>
+            <p class="text-primary font-semibold mb-2">Fitness &amp; Wellness Expert</p>
+            <div class="flex items-center gap-2 text-sm text-gray">
+              <span>REPs UAE</span><span>•</span><span>Functional Training &amp; Mobility</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <p class="text-gray leading-relaxed">
+            With 15+ years transforming clients, Nemanja combines functional training, mobility, and smart habit coaching to deliver sustainable results and pain-free movement.
+          </p>
+
+          <div>
+            <h4 class="font-headline text-lg font-bold text-white mb-3">Certifications</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="tier-badge text-xs">ASHI</span>
+              <span class="tier-badge text-xs">NASM</span>
+              <span class="tier-badge text-xs">NEFITPRO</span>
+              <span class="tier-badge text-xs">BOXING</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-headline text-lg font-bold text-white mb-3">Specializations</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                International certified personal trainer
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Weight loss specialist
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Boxing conditioning coach
+              </li>
+            </ul>
+          </div>
+
+          <button type="button" onclick="openCoachModal('Nemanja')" class="w-full btn-secondary text-sm">Book with Nemanja</button>
+        </div>
+      </div>
+
+      <!-- Coach: Farah -->
+      <div class="luxury-card group animate-scale-in" style="animation-delay: 0.2s;">
+        <div class="relative overflow-hidden rounded-2xl mb-6 h-96 border border-blue-800/30">
+          <img
+            src="/assets/images/coach/farah.webp"
+            alt="Coach Farah - Fitness & Wellness Expert"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="800"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/60 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="font-headline text-3xl font-extrabold text-white mb-1">Farah</h3>
+            <p class="text-primary font-semibold mb-2">Fitness &amp; Wellness Expert</p>
+            <div class="flex items-center gap-2 text-sm text-gray">
+              <span>ACE-CPT, PN-L1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <p class="text-gray leading-relaxed">
+            Farzane Farah is a certified fitness trainer specializing in strength training, body recomposition, and functional workouts, with a focus on proper technique, consistency, and long-term results.
+          </p>
+
+          <div>
+            <h4 class="font-headline text-lg font-bold text-white mb-3">Certifications</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="tier-badge text-xs">Fat Loss</span>
+              <span class="tier-badge text-xs">Wellness</span>
+              <span class="tier-badge text-xs">Postnatal</span>
+              <span class="tier-badge text-xs">Nutrition</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-headline text-lg font-bold text-white mb-3">Specializations</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Strength &amp; body recomposition
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Technique &amp; consistency focused
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Personalized long-term results
+              </li>
+            </ul>
+          </div>
+
+          <button type="button" onclick="openCoachModal('Farah')" class="w-full btn-secondary text-sm">Book with Farah</button>
+        </div>
+      </div>
+
+      <!-- Coach: Mike -->
+      <div class="luxury-card group animate-scale-in" style="animation-delay: 0.2s;">
+        <div class="relative overflow-hidden rounded-2xl mb-6 h-96 border border-blue-800/30">
+          <img
+            src="/assets/images/coach/thrive2.webp"
+            alt="Coach Mike - Fitness & Wellness Expert"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="800"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/60 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="font-headline text-3xl font-extrabold text-white mb-1">Mike</h3>
+            <p class="text-primary font-semibold mb-2">Fitness &amp; Wellness Expert</p>
+            <div class="flex items-center gap-2 text-sm text-gray">
+              <span>ACE-CPT, PN-L1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <p class="text-gray leading-relaxed">
+            A specialist in strength training and body recomposition, Coach Mike with 10+ years of experience is known for helping clients achieve long-term, sustainable results through smart programming and lifestyle-focused coaching.
+          </p>
+
+          <div>
+            <h4 class="font-headline text-lg font-bold text-white mb-3">Certifications</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="tier-badge text-xs">ACE-CPT</span>
+              <span class="tier-badge text-xs">PN-L1</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-headline text-lg font-bold text-white mb-3">Specializations</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                ACE Certified Personal Trainer
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Precision Nutrition Level 1
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Fitness Specialist
+              </li>
+            </ul>
+          </div>
+
+          <button type="button" onclick="openCoachModal('Mike')" class="w-full btn-secondary text-sm">Book with Mike</button>
+        </div>
+      </div>
+
+      <!-- Coach: Negin -->
+      <div class="luxury-card group animate-scale-in" style="animation-delay: 0.2s;">
+        <div class="relative overflow-hidden rounded-2xl mb-6 h-96 border border-blue-800/30">
+          <img
+            src="/assets/images/coach/Negin.webp"
+            alt="Coach Negin - Fitness & Wellness Expert"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="800"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/60 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="font-headline text-3xl font-extrabold text-white mb-1">Negin</h3>
+            <p class="text-primary font-semibold mb-2">Fitness &amp; Wellness Expert</p>
+            <div class="flex items-center gap-2 text-sm text-gray">
+              <span>ACE-CPT, PN-L1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <p class="text-gray leading-relaxed">
+            With over 15 years of experience in the fitness industry, Negin brings a science-based and results-driven approach to coaching, combining academic knowledge with practical training to support long-term health and performance.
+          </p>
+
+          <div>
+            <h4 class="font-headline text-lg font-bold text-white mb-3">Certifications</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="tier-badge text-xs">ACE-CPT</span>
+              <span class="tier-badge text-xs">PN-L1</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-headline text-lg font-bold text-white mb-3">Specializations</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Strength training &amp; body sculpting
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Mobility, flexibility &amp; functional training
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Sustainable progress &amp; long-term physical health
+              </li>
+            </ul>
+          </div>
+
+          <button type="button" onclick="openCoachModal('Negin')" class="w-full btn-secondary text-sm">Book with Negin</button>
+        </div>
+      </div>
+
+      <!-- Coach: Marko -->
+      <div class="luxury-card group animate-scale-in">
+        <div class="relative overflow-hidden rounded-2xl mb-6 h-96 border border-blue-800/30">
+          <img
+            src="/assets/images/coach/thrive1.webp"
+            alt="Coach Marko Perun - Head Strength & Conditioning Coach"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="800"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/60 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="font-headline text-3xl font-extrabold text-white mb-1">Marko Perun</h3>
+            <p class="text-primary font-semibold mb-2">Head Strength &amp; Conditioning Coach</p>
+            <div class="flex items-center gap-2 text-sm text-gray">
+              <span>NASM-CPT, ACE-FNS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <p class="text-gray leading-relaxed">
+            With 15+ years of coaching and over a decade training clients in Dubai, Marko has completed more than 18,000 personal training sessions — bringing elite knowledge, structure, and professionalism to every program.
+          </p>
+
+          <div>
+            <h4 class="font-headline text-lg font-bold text-white mb-3">Certifications</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="tier-badge text-xs">NASM-CPT</span>
+              <span class="tier-badge text-xs">ACE</span>
+              <span class="tier-badge text-xs">FNS</span>
+              <span class="tier-badge text-xs">Nutrition</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-headline text-lg font-bold text-white mb-3">Specializations</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                International certified personal trainer
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                ACE Fitness Nutrition Specialist
+              </li>
+              <li class="flex items-center gap-2 text-sm text-gray">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Sports Performance Specialist
+              </li>
+            </ul>
+          </div>
+
+          <button type="button" onclick="openCoachModal('Marko')" class="w-full btn-secondary text-sm">Book with Marko</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Philosophy Section -->
+<section id="philosophy" class="philo">
+  <div class="philo__inner">
+    <h2 class="philo__title">Our <span>Philosophy</span></h2>
+    <div class="philo__rule"></div>
+
+    <ul class="philo__list">
+      <li class="philo__item">
+        <div class="philo__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="philo__svg">
+            <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <div class="philo__text">
+          <h3>Evidence-Based Training</h3>
+          <p>Every program backed by scientific research and proven methodologies.</p>
+        </div>
+      </li>
+
+      <li class="philo__item">
+        <div class="philo__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="philo__svg">
+            <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <div class="philo__text">
+          <h3>Personalized Excellence</h3>
+          <p>No cookie-cutter programs — every plan tailored to your unique needs.</p>
+        </div>
+      </li>
+
+      <li class="philo__item">
+        <div class="philo__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="philo__svg">
+            <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <div class="philo__text">
+          <h3>Sustainable Results</h3>
+          <p>Building habits and mindsets for lifetime transformation.</p>
+        </div>
+      </li>
+
+      <li class="philo__item">
+        <div class="philo__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="philo__svg">
+            <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M7 12.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <div class="philo__text">
+          <h3>Holistic Approach</h3>
+          <p>Combining training, nutrition, recovery, and mindset.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- =================== LONG-FORM SEO CONTENT =================== -->
+<!-- ===================== (CLICK TO EXPAND) ===================== -->
+<!-- ============================================================ -->
+<section class="py-14 bg-gradient-to-b from-black via-blue-950/10 to-black seo-guide">
+  <style>
+    /* ===== SEO Accordion (matches screenshot bar style) ===== */
+    .seo-accordion { max-width: 72rem; margin: 0 auto; }
+    .seo-accordion summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+      outline: none;
+    }
+    .seo-accordion summary::-webkit-details-marker { display: none; }
+
+    .seo-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.1rem 1.35rem;
+      border-radius: 14px;
+
+      background: linear-gradient(180deg, rgba(20,32,60,0.55), rgba(10,15,30,0.65));
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 22px rgba(0,0,0,.18);
+    }
+
+    .seo-summary-title{
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #fff;
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+    }
+
+    .seo-summary-icon{
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.92);
+      font-weight: 900;
+      font-size: 20px;
+      line-height: 1;
+      flex: 0 0 auto;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    /* Hover/focus polish */
+    .seo-accordion summary:hover .seo-summary-icon{
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(245,208,98,0.35);
+      transform: scale(1.03);
+    }
+    .seo-accordion summary:focus-visible .seo-summary{
+      box-shadow: 0 0 0 3px rgba(245,208,98,0.18), 0 10px 22px rgba(0,0,0,.18);
+      border-color: rgba(245,208,98,0.35);
+    }
+
+    /* Open state */
+    .seo-accordion[open] .seo-summary{
+      border-color: rgba(245,208,98,0.25);
+    }
+    .seo-accordion[open] .seo-summary-icon{
+      transform: rotate(0deg);
+      border-color: rgba(245,208,98,0.35);
+    }
+
+    /* Content wrapper */
+    .seo-content{
+      margin-top: 1rem;
+      padding: 1.25rem 1.35rem 0;
+    }
+
+    /* Optional: nice readable blocks for your existing cards */
+    .seo-guide .seo-card{
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 1.25rem;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Make the inner FAQ details look consistent */
+    .seo-guide details{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 14px;
+      padding: .9rem 1rem;
+    }
+    .seo-guide details > summary{
+      font-weight: 800;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+
+  <div class="container mx-auto px-6">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- Accordion shell -->
+      <details class="seo-accordion" id="seoMoreDetails">
+        <summary class="seo-summary">
+          <span class="seo-summary-title">Dubai Personal Training — More Details</span>
+          <span class="seo-summary-icon" aria-hidden="true" data-icon>+</span>
+        </summary>
+
+        <!-- Your FULL 3000-word SEO article goes here -->
+        <div class="seo-content">
+
+          <h2 class="font-headline text-4xl md:text-5xl font-extrabold mb-6">
+            ThriveFit DXB in Dubai: <span class="text-primary">Your Complete Guide</span> to Elite Personal Training
+          </h2>
+          <p class="text-gray mb-8">
+            This guide is written for people in Dubai who want real results from personal training — whether your goal is fat loss, strength, body recomposition, improved mobility, better energy, or long-term health.
+            At ThriveFit DXB, we coach ambitious individuals using a system that’s structured, progressive, and sustainable — not trends, shortcuts, or random workouts.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-10">
+            <div class="seo-card">
+              <h3 class="font-headline text-2xl font-extrabold mb-3">What Makes ThriveFit DXB Different</h3>
+              <p class="text-gray">
+                Dubai has no shortage of gyms, trainers, and “one-size-fits-all” programs. The difference at ThriveFit DXB is the standard: your program is built around your body, your schedule, your lifestyle, and your goal.
+                We combine evidence-based training, precision coaching, and a practical approach to nutrition and recovery.
+              </p>
+            </div>
+            <div class="seo-card">
+              <h3 class="font-headline text-2xl font-extrabold mb-3">Who This Is For</h3>
+              <p class="text-gray">
+                If you’ve tried to lose weight but keep rebounding, you want to get strong without injury, you’re rebuilding your fitness after time off, or you need accountability that actually works — you’re in the right place.
+                We coach beginners, intermediates, and advanced clients, and we tailor the plan to your experience.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="font-headline text-3xl font-extrabold mb-4">Why Personal Training in Dubai Works Best with Structure</h3>
+          <p class="text-gray mb-6">
+            The biggest challenge in Dubai is not motivation — it’s consistency. Long work hours, travel, social commitments, and stress can break routines fast. A strong program solves this by removing guesswork.
+            At ThriveFit DXB, we build a weekly structure around your availability and your recovery capacity. That means you train hard when you can, and you train smart when you must.
+            Progress comes from consistency and quality — not from perfect weeks that never happen.
+          </p>
+          <p class="text-gray mb-6">
+            Our coaching starts with your baseline: movement quality, strength levels, body composition, training history, injury history, sleep, nutrition, and daily activity. From there, we build progressive overload
+            while managing fatigue. This is how clients in Dubai build lean muscle, reduce body fat, and improve posture and performance without burning out.
+          </p>
+
+          <h3 class="font-headline text-3xl font-extrabold mb-4">Fat Loss, Body Recomposition, and the Real Truth</h3>
+          <p class="text-gray mb-6">
+            “Fat loss” is often misunderstood. Most people think more sweat equals more fat loss. In reality, fat loss comes from a consistent calorie deficit supported by strength training, good movement, adequate protein,
+            and manageable stress. ThriveFit DXB focuses on a strategy that fits Dubai life: training sessions that build strength and shape while improving fitness, combined with nutrition guidance you can follow.
+          </p>
+          <p class="text-gray mb-6">
+            Body recomposition is the goal for many of our clients: losing fat while building or maintaining muscle. It’s not magic — it’s precision.
+            Resistance training signals the body to keep muscle; protein supports recovery; step count and daily movement increase calorie output; sleep stabilizes hunger and energy.
+          </p>
+
+          <h3 class="font-headline text-3xl font-extrabold mb-4">Strength Training in Dubai: The Foundation of Transformation</h3>
+          <p class="text-gray mb-6">
+            Strength training is not “only for bodybuilders.” It’s the base of a healthy, athletic body for men and women of all ages.
+            When you train for strength correctly, you improve posture, bone density, metabolism, confidence, and injury resilience.
+          </p>
+
+          <h3 class="font-headline text-3xl font-extrabold mb-4">Mobility, Pain-Free Training, and Longevity</h3>
+          <p class="text-gray mb-6">
+            Mobility and stability work is integrated into your sessions: warm-ups that prepare the joints, activation that improves control, and accessory work that strengthens weak links.
+            This is why clients who previously struggled with knee pain, back tightness, or shoulder discomfort often feel improvement within weeks.
+          </p>
+
+          <h3 class="font-headline text-3xl font-extrabold mb-4">Training Options: Home, Outdoor, Gym, Corporate, and More</h3>
+          <p class="text-gray mb-6">
+            ThriveFit DXB supports different training environments, depending on your schedule and preference. Some clients love gym training for equipment variety and heavier progressive overload.
+            Others prefer at-home sessions because it removes commuting and makes consistency easier.
+          </p>
+
+          <h3 class="font-headline text-3xl font-extrabold mb-4">Nutrition Guidance That Works in Dubai</h3>
+          <p class="text-gray mb-6">
+            Dubai has incredible food — and a lot of social events. That doesn’t mean you can’t get lean and strong.
+            The key is a strategy that’s realistic: protein-first meals, smart portions, hydration, and flexible planning.
+          </p>
+
+          <h3 class="font-headline text-3xl font-extrabold mb-4">How to Choose the Right Personal Trainer in Dubai</h3>
+          <p class="text-gray mb-10">
+            A great trainer teaches technique, programs intelligently, tracks progress, adapts when life changes, and coaches habits.
+            When you choose ThriveFit DXB, you get coaching that’s built on systems and standards.
+          </p>
+
+          <h3 class="font-headline text-3xl font-extrabold mb-6">FAQ: ThriveFit DXB Coaching in Dubai</h3>
+          <div class="space-y-4">
+            <details>
+              <summary>How many sessions per week do I need?</summary>
+              <p class="text-gray mt-3">
+                Most clients get strong results with 2–4 sessions per week, depending on goals, schedule, and recovery.
+              </p>
+            </details>
+
+            <details>
+              <summary>Do you offer at-home personal training in Dubai?</summary>
+              <p class="text-gray mt-3">
+                Yes. At-home training is one of the most effective options for busy clients.
+              </p>
+            </details>
+
+            <details>
+              <summary>Can beginners train with ThriveFit DXB?</summary>
+              <p class="text-gray mt-3">
+                Absolutely. Beginners usually progress the fastest when they have proper technique coaching and a clear plan.
+              </p>
+            </details>
+
+            <details>
+              <summary>What if I have pain or an old injury?</summary>
+              <p class="text-gray mt-3">
+                We adapt your program around your injury history and prioritize safe movement patterns.
+              </p>
+            </details>
+
+            <details>
+              <summary>Do you help with nutrition?</summary>
+              <p class="text-gray mt-3">
+                Yes. Expect a practical approach: protein targets, habits, and a plan that works with Dubai life.
+              </p>
+            </details>
+
+            <details>
+              <summary>How long does it take to see results?</summary>
+              <p class="text-gray mt-3">
+                Many clients feel better within 2–3 weeks. Visible body changes typically begin in 4–8 weeks.
+              </p>
+            </details>
+          </div>
+
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+  <script>
+    // Swap + / – icon like the screenshot
+    (function(){
+      const acc = document.getElementById('seoMoreDetails');
+      if (!acc) return;
+      const icon = acc.querySelector('[data-icon]');
+      if (!icon) return;
+
+      function sync(){
+        icon.textContent = acc.open ? '–' : '+';
+      }
+      sync();
+      acc.addEventListener('toggle', sync);
+    })();
+  </script>
+</section>
+
+
+<!-- CTA Section -->
+<section class="py-24 bg-black">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-headline text-4xl md:text-5xl font-extrabold mb-6">
+        Ready to <span class="text-primary">Begin Your Transformation?</span>
+      </h2>
+      <p class="text-xl text-gray mb-8">
+        Join Dubai's elite fitness community and experience world-class coaching
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/contact" class="btn-secondary">Book Consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coach Booking Modal -->
+<div id="coachModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4" aria-hidden="true">
+  <div class="bg-surface max-w-md w-full rounded-2xl border border-primary/20 p-8 relative animate-scale-in" role="dialog" aria-modal="true" aria-label="Coach booking modal">
+    <button type="button" onclick="closeCoachModal()" class="absolute top-4 right-4 text-gray hover:text-primary transition-300" aria-label="Close modal">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <h3 class="font-headline text-2xl font-extrabold mb-2 text-primary">Book with <span id="coachName"></span></h3>
+    <p class="text-gray mb-6 text-sm">Schedule your consultation session</p>
+
+    <form class="space-y-4">
+      <div>
+        <label class="block text-sm font-semibold text-white mb-2">Your Name *</label>
+        <input type="text" required class="form-input w-full" placeholder="Full Name" autocomplete="name">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold text-white mb-2">WhatsApp Number *</label>
+        <input type="tel" required class="form-input w-full" placeholder="+971 XX XXX XXXX" autocomplete="tel">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold text-white mb-2">Preferred Time</label>
+        <select class="form-input w-full">
+          <option>Morning (6am - 10am)</option>
+          <option>Midday (10am - 2pm)</option>
+          <option>Afternoon (2pm - 6pm)</option>
+          <option>Evening (6pm - 9pm)</option>
+        </select>
+      </div>
+
+      <button type="submit" class="w-full btn-primary">Confirm Booking</button>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-black border-t border-white/10 py-16">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div class="md:col-span-1">
+        <div class="flex items-center gap-3 mb-6">
+          <a href="/" aria-label="Home">
+            <img src="/assets/images/logo.png"
+                 alt="ThriveFit DXB logo"
+                 class="h-14 w-auto object-contain"
+                 loading="lazy"
+                 decoding="async">
+          </a>
+        </div>
+
+        <p class="text-gray text-sm mb-6">
+          Elite personal trainers coming to your home, office, or outdoor space in Dubai. No gym required.
+        </p>
+
+        <div class="flex items-center gap-4">
+          <a href="https://www.facebook.com/people/Thrive-Fit-Dxb/61584039750159/" class="text-gray hover:text-primary transition-colors" aria-label="Facebook">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/thrivefitdxb/" class="text-gray hover:text-primary transition-colors" aria-label="Instagram">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@thrive.fit.dxb?lang=en-GB" class="text-gray hover:text-primary transition-colors" aria-label="TikTok">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12.75 3a.75.75 0 0 1 .75-.75h2.72a6.9 6.9 0 0 0 2.17 4.13 6.9 6.9 0 0 0 4.11 1.51v2.73a9.4 9.4 0 0 1-3.5-.66 9.1 9.1 0 0 1-1.98-1.05v7.13A6.99 6.99 0 1 1 9 9.9c.64 0 1.26.07 1.86.21v2.85a3.6 3.6 0 1 0 2.64 3.47V3Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-headline text-lg font-bold text-white mb-4">Quick Links</h4>
+        <ul class="space-y-3">
+          <li><a href="/" class="text-gray hover:text-primary transition-colors">Home</a></li>
+          <li><a href="/about" class="text-gray hover:text-primary transition-colors">About Us</a></li>
+          <li><a href="/career" class="text-gray hover:text-primary transition-colors">Career</a></li>
+          <li><a href="/transformation" class="text-gray hover:text-primary transition-colors">Transformations</a></li>
+          <li><a href="/contact" class="text-gray hover:text-primary transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-headline text-lg font-bold text-white mb-4">Training Options</h4>
+        <ul class="space-y-3">
+          <li><a href="/gym-personal-training" class="text-gray hover:text-primary transition-colors">Gym Personal Training</a></li>
+          <li><a href="/outdoor-training" class="text-gray hover:text-primary transition-colors">Outdoor Training</a></li>
+          <li><a href="/at-home-training" class="text-gray hover:text-primary transition-colors">At-Home Training</a></li>
+          <li><a href="/corporate-fitness" class="text-gray hover:text-primary transition-colors">Corporate Fitness</a></li>
+          <li><a href="/children-fitness" class="text-gray hover:text-primary transition-colors">Children-Fitness</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-headline text-lg font-bold text-white mb-4">Contact Us</h4>
+        <ul class="space-y-3 text-gray">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <span class="text-sm">Serving all Dubai areas</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            <a href="mailto:info@thrivefitdxb.com" class="text-sm hover:text-primary transition-colors">info@thrivefitdxb.com</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+            <a href="tel:+971507728708" class="text-sm hover:text-primary transition-colors">+971 50 772 8708</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-gray text-sm">© 2025 ThriveFit DXB. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="/privacy-policy" class="text-gray hover:text-primary transition-colors text-sm">Privacy Policy</a>
+        <a href="/terms-of-service" class="text-gray hover:text-primary transition-colors text-sm">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- ============================================================ -->
+<!-- ============================ SCRIPTS ======================== -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* NAV GLASS ON SCROLL */
+  const nav = document.getElementById("navbar");
+  function updateNav() {
+    if (window.scrollY > 8) nav.classList.add("nav-scrolled");
+    else nav.classList.remove("nav-scrolled");
+  }
+  updateNav();
+  window.addEventListener("scroll", updateNav, { passive: true });
+
+  /* DESKTOP DROPDOWN */
+  (function() {
+    const root = document.querySelector(".nav-services");
+    if (!root) return;
+    const btn = root.querySelector(".nav-services-btn");
+    function open() {
+      root.classList.add("show");
+      btn.setAttribute("aria-expanded", "true");
+    }
+    function close() {
+      root.classList.remove("show");
+      btn.setAttribute("aria-expanded", "false");
+    }
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      root.classList.contains("show") ? close() : open();
+    });
+    document.addEventListener("click", e => {
+      if (!root.contains(e.target)) close();
+    });
+  })();
+
+  /* MOBILE MENU */
+  (function() {
+    const menu = document.getElementById("tf-mobile-menu");
+    const btn = document.querySelector(".tf-hamburger");
+    if (!menu || !btn) return;
+
+    function setExpanded(val) { btn.setAttribute("aria-expanded", String(val)); }
+
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      menu.classList.toggle("hidden");
+      setExpanded(!menu.classList.contains("hidden"));
+    });
+
+    document.addEventListener("click", e => {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.add("hidden");
+        setExpanded(false);
+      }
+    });
+  })();
+
+  /* MOBILE SERVICES ACCORDION */
+  (function() {
+    const btn = document.querySelector(".tf-mobile-services-btn");
+    const panel = document.getElementById("tf-mobile-services-panel");
+    if (!btn || !panel) return;
+
+    btn.addEventListener("click", () => {
+      const isOpen = !panel.classList.contains("hidden");
+      panel.classList.toggle("hidden");
+      btn.setAttribute("aria-expanded", String(!isOpen));
+    });
+  })();
+
+});
+</script>
+
+<script>
+/* Coach Booking Modal Functions */
+function openCoachModal(coachName) {
+  const modal = document.getElementById('coachModal');
+  document.getElementById('coachName').textContent = coachName;
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCoachModal() {
+  const modal = document.getElementById('coachModal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = 'auto';
+}
+
+document.getElementById('coachModal').addEventListener('click', function(e) {
+  if (e.target === this) closeCoachModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeCoachModal();
+});
+</script>
+
+<script>
+/* Advanced Scroll Reveal Animation */
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    } else {
+      entry.target.style.opacity = '0';
+      entry.target.style.transform = 'translateY(20px)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.animate-slide-up, .animate-scale-in, .animate-on-scroll').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+  observer.observe(el);
+});
+</script>
+
+<script>
+/* Hash offset scroll (if you ever link /about#coaches etc.) */
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      setTimeout(() => {
+        const headerOffset = 120;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      }, 250);
+    }
+  }
+});
+</script>
+
+<script id="dhws-dataInjector" src="/public/dhws-data-injector.js"></script>
+</body>
+</html>

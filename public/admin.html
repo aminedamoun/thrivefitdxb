@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ThriveFit DXB — Careers & Enquiries Admin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --gold:#FFD34E; --ink:#0B1220; --ink-2:#0A0E17; --fg:#FBFBFB; --muted:#A5ADBB;
+      --card:rgba(255,255,255,.06); --border:rgba(255,255,255,.12); --border-strong:rgba(255,255,255,.18);
+      --radius:18px; --shadow:0 24px 80px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--fg);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(28,44,92,.25), transparent 60%),
+        radial-gradient(900px 600px at 100% 0%, rgba(28,44,92,.22), transparent 55%),
+        linear-gradient(180deg, var(--ink), var(--ink-2) 30%, #04070D 100%);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+    }
+    .shell{max-width:1180px; margin:0 auto; padding:22px 18px;}
+    @media(min-width:768px){ .shell{padding:28px 24px;} }
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:16px}
+    .brand{display:flex;align-items:center;gap:.8rem}
+    .brand img{height:56px;width:auto;object-fit:contain}
+    .brand h1{font-weight:900;font-size:1.35rem;letter-spacing:.2px}
+    .actions{display:flex;align-items:center;gap:.6rem}
+    body.auth-logged-out .topbar{justify-content:center}
+    body.auth-logged-out #loginCard{margin:48px auto 0 auto}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border:1px solid var(--border); border-radius:calc(var(--radius) + 4px); box-shadow:var(--shadow);}
+    .card-pad{padding:18px}
+    @media(min-width:768px){.card-pad{padding:22px}}
+
+    .input{width:100%; border-radius:14px; color:var(--fg); background:rgba(8,12,20,.9); border:1px solid var(--border); padding:.75rem .95rem;}
+    .input::placeholder{color:var(--muted)}
+    .input:focus{outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(255,211,78,.22)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:12px;font-weight:800;letter-spacing:.2px;padding:.7rem 1rem;transition:filter .15s ease, transform .05s}
+    .btn:active{transform:translateY(1px)}
+    .btn-ghost{background:rgba(255,255,255,.06); border:1px solid var(--border); color:#fff}
+    .btn-ghost:hover{background:rgba(255,255,255,.12); border-color:var(--border-strong)}
+    .btn-primary{background:var(--gold); color:#091018; border:0; box-shadow:0 12px 40px rgba(255,211,78,.28)}
+    .btn-primary:hover{filter:brightness(.97)}
+    #loginForm .btn-primary{width:100%; font-size:1.05rem}
+
+    .filters{display:flex;flex-direction:column;gap:.75rem;margin:18px 0}
+    @media(min-width:768px){.filters{flex-direction:row;align-items:center}}
+    .table-wrap{border:1px solid var(--border); border-radius:calc(var(--radius) + 6px); overflow:hidden}
+    thead tr{background:rgba(255,255,255,.08)}
+    th,td{padding:.7rem .8rem}
+    tbody tr{background:rgba(0,0,0,.35); border-top:1px solid var(--border)}
+    tbody tr:hover{background:rgba(255,255,255,.04)}
+
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:.25rem .55rem;border-radius:999px;font-size:.73rem;border:1px solid var(--border)}
+    .badge--new{background:rgba(255,211,78,.2); border-color:rgba(255,211,78,.5); color:#ffeaa4}
+
+    #bell{position:relative}
+    #bellBadge{min-width:1.35rem}
+
+    /* Tabs */
+    .tabs{display:flex;gap:10px;margin:8px 0 6px}
+    .tab{border-radius:12px;border:1px solid var(--border);padding:.55rem .9rem;font-weight:800;letter-spacing:.2px;background:rgba(255,255,255,.06);cursor:pointer}
+    .tab.active{background:var(--gold);color:#000;border-color:transparent;box-shadow:0 10px 28px rgba(255,211,78,.25)}
+
+    /* Modal */
+    .tf-modal{position:fixed;inset:0;z-index:1000;display:none}
+    .tf-modal.show{display:block}
+    .tf-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(8px)}
+    .tf-card{position:relative;margin:6vh auto 0;max-width:860px;width:min(92vw,860px);
+      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+      border:1px solid var(--border); border-radius:24px; box-shadow:var(--shadow); color:#fff;
+      display:flex;flex-direction:column;max-height:88vh;}
+    .tf-hd{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;
+      padding:18px 22px;border-bottom:1px solid var(--border-strong);
+      background:linear-gradient(180deg, rgba(13,21,38,.96), rgba(13,21,38,.86));
+      border-top-left-radius:24px;border-top-right-radius:24px}
+    .tf-title{font-weight:900;font-size:1.05rem}
+    .tf-x{width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:transparent;color:#fff}
+    .tf-x:hover{border-color:var(--gold);background:var(--gold);color:#000}
+    .tf-bd{padding:20px 22px;overflow:auto;max-height:70vh}
+    .tf-ft{display:flex;justify-content:flex-end;gap:10px;padding:16px 22px;border-top:1px solid var(--border-strong);
+      background:linear-gradient(0deg, rgba(13,21,38,.96), rgba(13,21,38,.86));
+      border-bottom-left-radius:24px;border-bottom-right-radius:24px}
+    .tf-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}
+    .tf-k{display:block;font-size:.72rem;color:var(--muted)}
+    .tf-v{display:block;font-weight:800}
+    .tf-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .tf-field{padding:14px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.03)}
+    .tf-label{font-size:.8rem;color:var(--muted);margin-bottom:6px}
+    .tf-value{font-weight:600}
+    .tf-span-2{grid-column:1/-1}
+    .tf-note{white-space:pre-wrap;line-height:1.5}
+    .tf-input, .tf-select{width:100%;padding:.9rem 1rem;border-radius:12px;color:#fff;background:rgba(255,255,255,.06);border:1px solid var(--border)}
+    .tf-input:focus, .tf-select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,211,78,.22)}
+    .tf-row{display:flex;gap:16px;align-items:flex-end}
+    .tf-files{margin-left:auto}
+    .tf-btn{border-radius:12px;padding:.9rem 1.1rem;font-weight:800;letter-spacing:.2px;border:1px solid var(--border)}
+    .tf-btn--ghost{background:transparent;color:#fff}
+    .tf-btn--ghost:hover{border-color:var(--gold)}
+    .tf-btn--primary{background:var(--gold);color:#000;border-color:transparent;box-shadow:0 12px 30px rgba(255,211,78,.25)}
+    .tf-link{color:var(--gold);text-decoration:underline}
+    .tf-badge{display:inline-flex;align-items:center;gap:6px;padding:.25rem .55rem;border-radius:999px;font-size:.73rem;background:rgba(255,255,255,.08);border:1px solid var(--border)}
+    .tf-badge--new{background:rgba(255,211,78,.18);border-color:rgba(255,211,78,.35);color:#ffeaa4}
+    @media (max-width:640px){
+      .tf-summary{grid-template-columns:1fr 1fr}
+      .tf-grid{grid-template-columns:1fr}
+      .tf-row{flex-direction:column;align-items:stretch}
+      .tf-files{margin-left:0}
+    }
+  </style>
+</head>
+<body class="auth-logged-out">
+  <div class="shell">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="brand">
+        <img src="/assets/images/logo.png" alt="ThriveFit DXB" />
+        <h1>Careers Admin</h1>
+      </div>
+      <div class="actions">
+        <button id="bell" class="btn btn-ghost p-2" title="New items">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M15 17h5l-1.4-1.4A2 2 0 0118 14v-3a6 6 0 10-12 0v3a2 2 0 01-.6 1.4L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+          </svg>
+          <span id="bellBadge" class="hidden absolute -top-1 -right-1 bg-[var(--gold)] text-black text-xs font-extrabold px-1.5 py-0.5 rounded-full"></span>
+        </button>
+        <span id="whoami" class="text-sm text-[var(--muted)]"></span>
+        <button id="logoutBtn" class="hidden btn btn-ghost py-2 px-3 text-sm">Logout</button>
+      </div>
+    </header>
+
+    <!-- Login -->
+    <section id="loginCard" class="card card-pad max-w-md mx-auto">
+      <h2 class="text-xl font-extrabold mb-2">Sign in</h2>
+      <p class="text-[var(--muted)] text-sm mb-4">Admins only. Use the email/password you created in Supabase Auth.</p>
+      <form id="loginForm" class="space-y-3">
+        <input id="email" type="email" required placeholder="you@thrivefitdxb.com" class="input">
+        <input id="password" type="password" required placeholder="Password" class="input">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+        <p id="authMsg" class="text-sm text-rose-300 min-h-[1.25rem]"></p>
+      </form>
+    </section>
+
+    <!-- Tabs -->
+    <div id="tabs" class="tabs hidden">
+      <button id="tabCareers"   class="tab active">Careers</button>
+      <button id="tabEnquiries" class="tab">Client Enquiries</button>
+    </div>
+
+    <!-- CAREERS -->
+    <section id="careersArea" class="hidden">
+      <div class="filters">
+        <select id="status" class="input md:max-w-xs">
+          <option value="">All statuses</option>
+          <option>new</option>
+          <option>reviewing</option>
+          <option>shortlisted</option>
+          <option>rejected</option>
+          <option>hired</option>
+        </select>
+        <div class="flex gap-2">
+          <button id="refresh" class="btn btn-ghost">Refresh</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr>
+              <th class="text-left">When</th>
+              <th class="text-left">Name</th>
+              <th class="text-left">Email</th>
+              <th class="text-left">Role</th>
+              <th class="text-left">Status</th>
+              <th class="text-left">Files</th>
+              <th class="text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ENQUIRIES -->
+    <section id="enquiriesArea" class="hidden">
+      <div class="filters">
+        <select id="enqStatus" class="input md:max-w-xs">
+          <option value="">All statuses</option>
+          <option>new</option>
+          <option>contacted</option>
+          <option>closed</option>
+        </select>
+        <div class="flex gap-2">
+          <button id="enqRefresh" class="btn btn-ghost">Refresh</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="min-w-full text-sm">
+          <thead>
+          <tr>
+            <th class="text-left">When</th>
+            <th class="text-left">Name</th>
+            <th class="text-left">Email</th>
+            <th class="text-left">Phone</th>
+            <th class="text-left">Subject</th>
+            <th class="text-left">Status</th>
+            <th class="text-left">Actions</th>
+          </tr>
+          </thead>
+          <tbody id="enqRows"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <!-- Careers Modal -->
+  <div id="adminModal" class="tf-modal">
+    <div class="tf-backdrop" data-close></div>
+    <div class="tf-card" role="dialog" aria-modal="true" aria-labelledby="m_title">
+      <div class="tf-hd">
+        <h3 id="m_title" class="tf-title">Candidate — <span id="m_name">—</span></h3>
+        <button class="tf-x" id="m_close" aria-label="Close">&times;</button>
+      </div>
+      <div class="tf-bd">
+        <div class="tf-summary">
+          <div><span class="tf-k">Email</span><span id="m_email" class="tf-v">—</span></div>
+          <div><span class="tf-k">Phone</span><span id="m_phone" class="tf-v">—</span></div>
+          <div><span class="tf-k">Role</span><span id="m_role" class="tf-v">—</span></div>
+          <div><span class="tf-k">Status</span><span id="m_status_badge" class="tf-badge tf-badge--new">new</span></div>
+        </div>
+
+        <div class="tf-grid">
+          <div class="tf-field"><div class="tf-label">Experience</div><div id="m_exp" class="tf-value">— yrs</div></div>
+          <div class="tf-field"><div class="tf-label">Location</div><div id="m_location" class="tf-value">—</div></div>
+          <div class="tf-field"><div class="tf-label">Portfolio</div><a id="m_portfolio" class="tf-link" href="#" target="_blank" rel="noopener">—</a></div>
+          <div class="tf-field"><div class="tf-label">Instagram</div><a id="m_ig" class="tf-link" href="#" target="_blank" rel="noopener">—</a></div>
+          <div class="tf-field tf-span-2"><div class="tf-label">Videos</div><ul id="m_videos" class="list-disc pl-5 space-y-1"></ul></div>
+          <div class="tf-field tf-span-2"><div class="tf-label">Cover Note</div><div id="m_cover" class="tf-note">—</div></div>
+        </div>
+
+        <div class="mt-4">
+          <label class="tf-label">Admin Notes</label>
+          <textarea id="m_notes" rows="6" class="tf-input" placeholder="Notes visible to admins only…"></textarea>
+        </div>
+
+        <div class="tf-row mt-3">
+          <div>
+            <label class="tf-label">Status</label>
+            <select id="m_status" class="tf-select">
+              <option value="new">new</option><option value="reviewing">reviewing</option>
+              <option value="shortlisted">shortlisted</option><option value="rejected">rejected</option><option value="hired">hired</option>
+            </select>
+          </div>
+          <div class="tf-files">
+            <span class="tf-label">Files</span>
+            <div id="m_files" class="flex flex-col gap-2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="tf-ft">
+        <button class="tf-btn tf-btn--ghost" data-close>Close</button>
+        <button id="m_save" class="tf-btn tf-btn--primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enquiry Modal -->
+  <div id="enqModal" class="tf-modal">
+    <div class="tf-backdrop" data-close></div>
+    <div class="tf-card" role="dialog" aria-modal="true" aria-labelledby="e_title">
+      <div class="tf-hd">
+        <h3 id="e_title" class="tf-title">Client Enquiry — <span id="e_name">—</span></h3>
+        <button class="tf-x" id="e_close" aria-label="Close">&times;</button>
+      </div>
+      <div class="tf-bd">
+        <div class="tf-summary">
+          <div><span class="tf-k">Email</span><span id="e_email" class="tf-v">—</span></div>
+          <div><span class="tf-k">Phone</span><span id="e_phone" class="tf-v">—</span></div>
+          <div><span class="tf-k">Subject</span><span id="e_subject" class="tf-v">—</span></div>
+          <div><span class="tf-k">Status</span><span id="e_status_badge" class="tf-badge tf-badge--new">new</span></div>
+        </div>
+        <div class="tf-field tf-span-2">
+          <div class="tf-label">Message</div>
+          <div id="e_message" class="tf-note">—</div>
+        </div>
+        <div class="tf-grid">
+          <div class="tf-field">
+            <div class="tf-label">Source</div>
+            <div id="e_source" class="tf-value">—</div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <label class="tf-label">Admin Notes</label>
+          <textarea id="e_notes" rows="5" class="tf-input" placeholder="Notes visible to admins only…"></textarea>
+        </div>
+
+        <div class="tf-row mt-3">
+          <div>
+            <label class="tf-label">Status</label>
+            <select id="e_status" class="tf-select">
+              <option value="new">new</option>
+              <option value="contacted">contacted</option>
+              <option value="closed">closed</option>
+            </select>
+          </div>
+          <div style="flex:1"></div>
+        </div>
+      </div>
+      <div class="tf-ft">
+        <button class="tf-btn tf-btn--ghost" data-close>Close</button>
+        <button id="e_save" class="tf-btn tf-btn--primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2.47.10/dist/umd/supabase.js"></script>
+  <script>
+    /* ===== Supabase ===== */
+    const SUPABASE_URL = 'https://fhiivigvbopjgnwmzbnj.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZoaWl2aWd2Ym9wamdud216Ym5qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUzOTIyMDUsImV4cCI6MjA4MDk2ODIwNX0.qGNBiksmCfXtKWV-malZRmjGEfmuedAkV8K_NArlbKM';
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const fmt = (d) => new Date(d).toLocaleString();
+
+    /* ===== Elements ===== */
+    // Shell auth
+    const loginCard = document.getElementById('loginCard');
+    const adminAreaCareers = document.getElementById('careersArea');
+    const adminAreaEnq = document.getElementById('enquiriesArea');
+    const tabsWrap = document.getElementById('tabs');
+    const tabCareers = document.getElementById('tabCareers');
+    const tabEnquiries = document.getElementById('tabEnquiries');
+    const whoami = document.getElementById('whoami');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const loginForm = document.getElementById('loginForm');
+    const authMsg = document.getElementById('authMsg');
+    const bell = document.getElementById('bell');
+    const bellBadge = document.getElementById('bellBadge');
+
+    // Careers
+    const statusSel = document.getElementById('status');
+    const refreshBtn = document.getElementById('refresh');
+    const rows = document.getElementById('rows');
+
+    // Careers modal
+    const modal = document.getElementById('adminModal');
+    const mClose = document.getElementById('m_close');
+    const mTitle = document.getElementById('m_title');
+    const mName = document.getElementById('m_name');
+    const mEmail = document.getElementById('m_email');
+    const mPhone = document.getElementById('m_phone');
+    const mRole = document.getElementById('m_role');
+    const mStatusBadge = document.getElementById('m_status_badge');
+    const mExp = document.getElementById('m_exp');
+    const mLoc = document.getElementById('m_location');
+    const mPort = document.getElementById('m_portfolio');
+    const mIg = document.getElementById('m_ig');
+    const mVideos = document.getElementById('m_videos');
+    const mCover = document.getElementById('m_cover');
+    const mNotes = document.getElementById('m_notes');
+    const mStatus = document.getElementById('m_status');
+    const mFiles = document.getElementById('m_files');
+    const mSave = document.getElementById('m_save');
+
+    // Enquiries
+    const enqStatus = document.getElementById('enqStatus');
+    const enqRefresh = document.getElementById('enqRefresh');
+    const enqRows = document.getElementById('enqRows');
+
+    // Enquiry modal
+    const enqModal = document.getElementById('enqModal');
+    const eClose = document.getElementById('e_close');
+    const eTitle = document.getElementById('e_title');
+    const eName = document.getElementById('e_name');
+    const eEmail = document.getElementById('e_email');
+    const ePhone = document.getElementById('e_phone');
+    const eSubject = document.getElementById('e_subject');
+    const eStatusBadge = document.getElementById('e_status_badge');
+    const eMessage = document.getElementById('e_message');
+    const eSource = document.getElementById('e_source');
+    const eNotes = document.getElementById('e_notes');
+    const eStatus = document.getElementById('e_status');
+    const eSave = document.getElementById('e_save');
+
+    let currentApp = null;
+    let currentEnq = null;
+    let newCount = 0; // total new across both
+
+    /* ===== Auth/UI ===== */
+    function setLoggedOutUI(){
+      document.body.classList.add('auth-logged-out');
+      loginCard.classList.remove('hidden');
+      tabsWrap.classList.add('hidden');
+      adminAreaCareers.classList.add('hidden');
+      adminAreaEnq.classList.add('hidden');
+      whoami.textContent=''; logoutBtn.classList.add('hidden'); setBadge(0);
+    }
+    function setLoggedInUI(user){
+      document.body.classList.remove('auth-logged-out');
+      loginCard.classList.add('hidden');
+      tabsWrap.classList.remove('hidden');
+      showTab('careers');
+      whoami.textContent=user.email;
+      logoutBtn.classList.remove('hidden');
+    }
+
+    async function checkSession(){
+      const { data:{ session } } = await sb.auth.getSession();
+      if(session?.user){
+        setLoggedInUI(session.user);
+        await refreshBadge();
+        liveSubscribe();
+        loadCareers(); loadEnquiries(); // preload
+      } else setLoggedOutUI();
+    }
+
+    loginForm.addEventListener('submit', async (e)=>{
+      e.preventDefault(); authMsg.textContent='';
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const { error } = await sb.auth.signInWithPassword({ email, password });
+      if(error){ authMsg.textContent = error.message; return; }
+      const { data:{ user } } = await sb.auth.getUser();
+      setLoggedInUI(user);
+      await refreshBadge();
+      liveSubscribe();
+      loadCareers(); loadEnquiries();
+    });
+    logoutBtn.addEventListener('click', async ()=>{ await sb.auth.signOut(); setLoggedOutUI(); });
+
+    /* ===== Tabs ===== */
+    function showTab(which){
+      if(which==='careers'){
+        tabCareers.classList.add('active'); tabEnquiries.classList.remove('active');
+        adminAreaCareers.classList.remove('hidden'); adminAreaEnq.classList.add('hidden');
+      }else{
+        tabEnquiries.classList.add('active'); tabCareers.classList.remove('active');
+        adminAreaEnq.classList.remove('hidden'); adminAreaCareers.classList.add('hidden');
+      }
+    }
+    tabCareers.addEventListener('click', ()=>showTab('careers'));
+    tabEnquiries.addEventListener('click', ()=>showTab('enquiries'));
+
+    /* ===== Bell / badge ===== */
+    function setBadge(n){ newCount=Math.max(0, n|0); if(newCount>0){ bellBadge.textContent=String(newCount); bellBadge.classList.remove('hidden'); } else bellBadge.classList.add('hidden'); }
+    async function refreshBadge(){
+      const [{count:c1},{count:c2}] = await Promise.all([
+        sb.from('applications').select('*',{count:'exact',head:true}).eq('status','new'),
+        sb.from('enquiries').select('*',{count:'exact',head:true}).eq('status','new')
+      ]);
+      setBadge((c1||0)+(c2||0));
+    }
+    function liveSubscribe(){
+      sb.channel('admin-live')
+        .on('postgres_changes',{event:'INSERT',schema:'public',table:'applications'},()=>{ setBadge(newCount+1); loadCareers(); })
+        .on('postgres_changes',{event:'UPDATE',schema:'public',table:'applications'},(p)=>{ if(p.old.status==='new'&&p.new.status!=='new') setBadge(newCount-1); if(p.old.status!=='new'&&p.new.status==='new') setBadge(newCount+1); loadCareers(); })
+        .on('postgres_changes',{event:'INSERT',schema:'public',table:'enquiries'},()=>{ setBadge(newCount+1); loadEnquiries(); })
+        .on('postgres_changes',{event:'UPDATE',schema:'public',table:'enquiries'},(p)=>{ if(p.old.status==='new'&&p.new.status!=='new') setBadge(newCount-1); if(p.old.status!=='new'&&p.new.status==='new') setBadge(newCount+1); loadEnquiries(); })
+        .subscribe();
+    }
+    bell.addEventListener('click', async ()=>{
+      // jump to the tab that currently has "new" (prefer careers)
+      const [{count:c1},{count:c2}] = await Promise.all([
+        sb.from('applications').select('*',{count:'exact',head:true}).eq('status','new'),
+        sb.from('enquiries').select('*',{count:'exact',head:true}).eq('status','new')
+      ]);
+      if((c1||0)>0){ showTab('careers'); statusSel.value='new'; loadCareers(); }
+      else if((c2||0)>0){ showTab('enquiries'); enqStatus.value='new'; loadEnquiries(); }
+    });
+
+    /* ===== Careers data ===== */
+    async function loadCareers(){
+      let q = sb.from('applications').select('*').order('created_at',{ascending:false});
+      if(statusSel.value) q = q.eq('status', statusSel.value);
+      const { data, error } = await q;
+      if(error){ rows.innerHTML = `<tr><td class="px-3 py-2 text-rose-300" colspan="7">${error.message}</td></tr>`; return; }
+      renderCareers(data||[]);
+    }
+    function renderCareers(list){
+      rows.innerHTML='';
+      if(!list.length){ rows.innerHTML = `<tr><td class="px-3 py-6 text-center text-[var(--muted)]" colspan="7">No applications.</td></tr>`; return; }
+      for(const r of list){
+        const tr=document.createElement('tr');
+        tr.innerHTML = `
+          <td>${fmt(r.created_at)}</td>
+          <td class="font-semibold">${r.full_name}</td>
+          <td>${r.email}</td>
+          <td>${r.role}</td>
+          <td><span class="badge ${r.status==='new'?'badge--new':'bg-white/10'}">${r.status}</span></td>
+          <td><button class="text-[var(--gold)] underline text-xs" data-open="${r.id}">Open</button></td>
+          <td><button class="btn btn-ghost text-xs" data-open="${r.id}">Details</button></td>
+        `;
+        rows.appendChild(tr);
+      }
+      rows.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openCareerModal(b.getAttribute('data-open'))));
+    }
+    refreshBtn.addEventListener('click', loadCareers);
+    statusSel.addEventListener('change', loadCareers);
+
+    function showModal(el){ el.classList.add('show'); document.body.classList.add('overflow-hidden'); }
+    function hideModal(el){ el.classList.remove('show'); document.body.classList.remove('overflow-hidden'); }
+
+    async function openCareerModal(id){
+      const { data:a, error } = await sb.from('applications').select('*').eq('id',id).single();
+      if(error) return alert(error.message);
+      currentApp = a;
+
+      mTitle.textContent=`${a.full_name} — ${a.role}`;
+      mName.textContent=a.full_name; mEmail.textContent=a.email; mPhone.textContent=a.phone; mRole.textContent=a.role;
+      mStatusBadge.textContent=a.status; mStatusBadge.className='tf-badge '+(a.status==='new'?'tf-badge--new':'');
+      mExp.textContent=(a.experience_years ?? '—') + (a.experience_years ? ' yrs' : ''); mLoc.textContent=a.location ?? '—';
+      if(a.portfolio_url){ mPort.href=a.portfolio_url; mPort.textContent=a.portfolio_url; } else { mPort.removeAttribute('href'); mPort.textContent='—'; }
+      if(a.instagram){ mIg.href=a.instagram.startsWith('http')?a.instagram:`https://instagram.com/${a.instagram.replace('@','')}`; mIg.textContent=a.instagram; } else { mIg.removeAttribute('href'); mIg.textContent='—'; }
+      mVideos.innerHTML=''; (a.videos||[]).forEach(v=>{ const li=document.createElement('li'); const l=document.createElement('a'); l.href=v; l.target='_blank'; l.rel='noopener'; l.className='tf-link'; l.textContent=v; li.appendChild(l); mVideos.appendChild(li); });
+      mCover.textContent=a.cover_note || '—';
+      mNotes.value=a.admin_notes || ''; mStatus.value=a.status;
+
+      mFiles.innerHTML='';
+      mFiles.appendChild(await signedEl(a.cv_path,'CV: Download'));
+      for(const p of (a.cert_paths||[])) mFiles.appendChild(await signedEl(p,'Certificate: Download'));
+
+      showModal(modal);
+    }
+    async function signedEl(storagePath,label){
+      const wrap=document.createElement('div');
+      const [bucket,...k]=storagePath.split('/'); const key=k.join('/');
+      const { data, error } = await sb.storage.from(bucket).createSignedUrl(key,3600);
+      if(error){ wrap.innerHTML=`<div class="text-rose-300 text-sm">${label}: ${error.message}</div>`; return wrap; }
+      const a=document.createElement('a'); a.href=data.signedUrl; a.target='_blank'; a.rel='noopener'; a.className='tf-link'; a.textContent=label; wrap.appendChild(a); return wrap;
+    }
+    mSave.addEventListener('click', async ()=>{
+      if(!currentApp) return;
+      const prev=currentApp.status, next=mStatus.value;
+      const { error } = await sb.from('applications').update({status:next,admin_notes:mNotes.value}).eq('id',currentApp.id);
+      if(error) return alert(error.message);
+      if(prev==='new' && next!=='new') setBadge(newCount-1);
+      hideModal(modal); currentApp=null; loadCareers();
+    });
+    mClose.addEventListener('click', ()=>hideModal(modal));
+    modal.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click', ()=>hideModal(modal)));
+    modal.addEventListener('click',(e)=>{ if(e.target.classList.contains('tf-backdrop')) hideModal(modal); });
+
+    /* ===== Enquiries data ===== */
+    async function loadEnquiries(){
+      let q = sb.from('enquiries').select('*').order('created_at',{ascending:false});
+      if(enqStatus.value) q = q.eq('status', enqStatus.value);
+      const { data, error } = await q;
+      if(error){ enqRows.innerHTML = `<tr><td class="px-3 py-2 text-rose-300" colspan="7">${error.message}</td></tr>`; return; }
+      renderEnquiries(data||[]);
+    }
+    function renderEnquiries(list){
+      enqRows.innerHTML='';
+      if(!list.length){ enqRows.innerHTML = `<tr><td class="px-3 py-6 text-center text-[var(--muted)]" colspan="7">No enquiries.</td></tr>`; return; }
+      for(const r of list){
+        const tr=document.createElement('tr');
+        const subject = (r.subject||'—').slice(0,60);
+        tr.innerHTML = `
+          <td>${fmt(r.created_at)}</td>
+          <td class="font-semibold">${r.full_name||'—'}</td>
+          <td>${r.email||'—'}</td>
+          <td>${r.phone||'—'}</td>
+          <td title="${r.subject||''}">${subject}</td>
+          <td><span class="badge ${r.status==='new'?'badge--new':'bg-white/10'}">${r.status||'new'}</span></td>
+          <td><button class="btn btn-ghost text-xs" data-enq="${r.id}">Details</button></td>
+        `;
+        enqRows.appendChild(tr);
+      }
+      enqRows.querySelectorAll('[data-enq]').forEach(b=>b.addEventListener('click',()=>openEnqModal(b.getAttribute('data-enq'))));
+    }
+    enqRefresh.addEventListener('click', loadEnquiries);
+    enqStatus.addEventListener('change', loadEnquiries);
+
+    function openEnqModalSetup(a){
+      currentEnq=a;
+      eTitle.textContent=`Client Enquiry — ${a.full_name||'—'}`;
+      eName.textContent=a.full_name||'—';
+      eEmail.textContent=a.email||'—';
+      ePhone.textContent=a.phone||'—';
+      eSubject.textContent=a.subject||'—';
+      eStatusBadge.textContent=a.status||'new';
+      eStatusBadge.className='tf-badge '+((a.status||'new')==='new'?'tf-badge--new':'');
+      eMessage.textContent=a.message||'—';
+      eSource.textContent=a.source||'—';
+      eNotes.value=a.admin_notes||'';
+      eStatus.value=a.status||'new';
+    }
+    async function openEnqModal(id){
+      const { data:a, error } = await sb.from('enquiries').select('*').eq('id',id).single();
+      if(error) return alert(error.message);
+      openEnqModalSetup(a);
+      showModal(enqModal);
+    }
+    eSave.addEventListener('click', async ()=>{
+      if(!currentEnq) return;
+      const prev=currentEnq.status||'new', next=eStatus.value;
+      const { error } = await sb.from('enquiries').update({status:next,admin_notes:eNotes.value}).eq('id',currentEnq.id);
+      if(error) return alert(error.message);
+      if(prev==='new' && next!=='new') setBadge(newCount-1);
+      hideModal(enqModal); currentEnq=null; loadEnquiries();
+    });
+    eClose.addEventListener('click', ()=>hideModal(enqModal));
+    enqModal.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click', ()=>hideModal(enqModal)));
+    enqModal.addEventListener('click',(e)=>{ if(e.target.classList.contains('tf-backdrop')) hideModal(enqModal); });
+
+    /* ===== Boot ===== */
+    checkSession();
+  </script>
+</body>
+</html>

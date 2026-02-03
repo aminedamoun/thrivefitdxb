@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact ThriveFit DXB - Premium fitness coaching in Dubai. Get in touch for personalized training programs, nutrition plans, and transformation coaching.">
+  <meta name="keywords" content="contact fitness coach dubai, personal training dubai contact, thrive fit contact, dubai gym contact">
+  <title>Contact Us - ThriveFit DXB | Premium Fitness Coaching Dubai</title>
+
+  <!-- ✅ Absolute asset path (works with /contact clean URL) -->
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <!-- Rocket (unchanged) -->
+  <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fsportcoach1836back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.10"></script>
+  <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+
+  <!-- Supabase UMD (load BEFORE our custom code) -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2.47.10/dist/umd/supabase.js"></script>
+
+  <style>
+    /* ---------- PAGE ANIMATIONS ---------- */
+    @keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeInScale { from {opacity:0; transform:scale(0.95);} to {opacity:1; transform:scale(1);} }
+    @keyframes fadeInLeft { from {opacity:0; transform:translateX(-30px);} to {opacity:1; transform:translateX(0);} }
+    @keyframes fadeInRight { from {opacity:0; transform:translateX(30px);} to {opacity:1; transform:translateX(0);} }
+
+    .animate-on-scroll { opacity: 0; }
+
+    /* GENERAL NAV LINK RESET */
+    .nav-link { appearance:none; background:transparent; border:0; font:inherit; color:inherit; cursor:pointer; padding:0; margin:0; text-transform:uppercase; font-weight:600; letter-spacing:.5px; }
+
+    /* GLASS NAV WHEN SCROLLING */
+    #navbar.nav-scrolled { background: rgba(12,12,12,0.55); backdrop-filter: blur(12px); box-shadow: 0 10px 22px rgba(0,0,0,.18); }
+
+    /* ---------- DESKTOP DROPDOWN ---------- */
+    .desktop-dropdown { position:absolute; top:100%; left:50%; transform: translateX(-50%) translateY(10px); width:320px; padding:22px 28px; border-radius:18px;
+      background: linear-gradient(180deg, rgba(20,32,60,0.95), rgba(10,15,30,0.98)); border:1px solid rgba(255,255,255,0.12); backdrop-filter: blur(18px);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.45); opacity:0; visibility:hidden; transition: opacity .25s ease, visibility .25s ease, transform .25s ease; z-index:99999; }
+    .nav-services.show .desktop-dropdown { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+    .desktop-dropdown a { display:block; padding:10px 0; margin-bottom:4px; font-size:15px; color:#fff; line-height:1.4; letter-spacing:.5px; font-weight:600; text-transform:uppercase; transition: color .2s ease, padding-left .2s ease; }
+    .desktop-dropdown a:hover { color:#f5d28a; padding-left:6px; }
+
+    /* ---------- MOBILE MENU ---------- */
+    .tf-mobile-menu { position:absolute; top:100%; left:0; right:0; background:rgba(0,0,0,0.95); backdrop-filter:blur(18px); border-top:1px solid rgba(255,255,255,0.08); z-index:40; }
+    .tf-mobile-link { padding:.5rem 0; font-weight:500; text-transform:uppercase; letter-spacing:.4px; }
+    .tf-mobile-services-panel a { display:block; padding:.35rem 0; font-size:.95rem; font-weight:500; }
+
+    .tf-mobile-services-btn { font-family:inherit !important; font-size:inherit !important; font-weight:inherit !important; letter-spacing:inherit !important; text-transform:inherit !important; color:inherit !important; }
+    .tf-mobile-services-btn span:first-child { font-weight:inherit !important; }
+
+    /* Success / error messages */
+    .success-message, .error-message {
+      margin-top: .75rem; border-radius: .5rem; padding: .9rem 1rem; font-size: .95rem;
+    }
+    .success-message { background: rgba(28,172,120,.14); border: 1px solid rgba(28,172,120,.35); color: #b7f3db; }
+    .error-message   { background: rgba(172,28,28,.14);  border: 1px solid rgba(172,28,28,.35);  color: #f7c2c2; }
+
+    /* Modal styling */
+    .tf-modal{position:fixed;inset:0;display:none;z-index:1000}
+    .tf-modal.show{display:block}
+    .tf-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px)}
+    .tf-card{position:relative;margin:8vh auto 0;max-width:520px;width:min(92vw,520px);
+      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.14);border-radius:18px;color:#fff;box-shadow:0 24px 80px rgba(0,0,0,.45)}
+    .tf-hd{padding:18px 20px;border-bottom:1px solid rgba(255,255,255,.14);font-weight:900}
+    .tf-bd{padding:20px}
+    .tf-ft{display:flex;gap:10px;justify-content:flex-end;padding:16px 20px;border-top:1px solid rgba(255,255,255,.12)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:12px;font-weight:800;letter-spacing:.2px;padding:.8rem 1.1rem;border:1px solid rgba(255,255,255,.16)}
+    .btn-ghost{background:transparent;color:#fff}
+    .btn-ghost:hover{border-color:#FFD34E}
+    .btn-primary{background:#FFD34E;color:#0A0E17;border-color:transparent;box-shadow:0 10px 30px rgba(255,211,78,.25)}
+  </style>
+
+</head>
+
+<body class="bg-black text-white overflow-x-hidden antialiased">
+
+<!-- ============================================================ -->
+<!-- =========================== NAVBAR ========================== -->
+<!-- ============================================================ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <!-- LOGO -->
+      <a href="/" aria-label="Home">
+        <img
+          src="/assets/images/logo.png"
+          class="h-12 w-auto object-contain tf-logo-loading"
+          alt="ThriveFit DXB logo"
+          decoding="async"
+          fetchpriority="high"
+          data-tf-logo
+        />
+      </a>
+
+      <!-- DESKTOP NAV -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/" class="nav-link text-white hover:text-primary">HOME</a>
+        <a href="/about" class="nav-link text-gray hover:text-primary">ABOUT US</a>
+
+        <!-- SERVICES DROPDOWN -->
+        <div class="relative nav-services">
+          <button class="nav-link text-gray hover:text-primary inline-flex items-center gap-2 nav-services-btn" aria-expanded="false" aria-controls="services-dd">
+            SERVICES
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+
+          <div id="services-dd" class="desktop-dropdown" role="menu">
+            <a href="/gym-personal-training">GYM PERSONAL TRAINING</a>
+            <a href="/at-home-training">AT-HOME TRAINING</a>
+            <a href="/outdoor-training">OUTDOOR TRAINING</a>
+            <a href="/corporate-fitness">CORPORATE FITNESS</a>
+            <a href="/children-fitness">CHILDREN FITNESS</a>
+            <a href="/facility-management">FACILITY MANAGEMENT</a>
+          </div>
+        </div>
+
+        <a href="/transformation" class="nav-link text-gray hover:text-primary">TRANSFORMATION</a>
+        <a href="/career" class="nav-link text-gray hover:text-primary">CAREER</a>
+        <a href="/contact" class="nav-link text-gray hover:text-primary">CONTACT</a>
+      </div>
+
+      <!-- DESKTOP CTA -->
+      <a href="/contact" class="hidden md:block bg-primary text-black font-cta text-lg px-8 py-3 rounded-lg">START TODAY</a>
+
+      <!-- MOBILE HAMBURGER -->
+      <button class="tf-hamburger md:hidden text-white" aria-label="Open menu" aria-expanded="false" aria-controls="tf-mobile-menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="tf-mobile-menu" class="tf-mobile-menu hidden md:hidden">
+    <div class="container mx-auto px-6 py-6 flex flex-col gap-2">
+      <a href="/" class="tf-mobile-link text-white hover:text-primary">Home</a>
+      <a href="/about" class="tf-mobile-link text-gray hover:text-primary">About Us</a>
+
+      <!-- MOBILE SERVICES -->
+      <div>
+        <button class="tf-mobile-link flex items-center justify-between text-gray hover:text-primary tf-mobile-services-btn" aria-expanded="false" aria-controls="tf-mobile-services-panel">
+          <span>Services</span>
+          <span class="text-primary text-xl">+</span>
+        </button>
+
+        <div id="tf-mobile-services-panel" class="hidden pl-4 mt-1 space-y-1.5 tf-mobile-services-panel">
+          <a href="/gym-personal-training" class="text-gray hover:text-white">Gym Personal Training</a>
+          <a href="/at-home-training" class="text-gray hover:text-white">At-Home Training</a>
+          <a href="/outdoor-training" class="text-gray hover:text-white">Outdoor Training</a>
+          <a href="/corporate-fitness" class="text-gray hover:text-white">Corporate Fitness</a>
+          <a href="/children-fitness" class="text-gray hover:text-white">Children Fitness</a>
+          <a href="/facility-management" class="text-gray hover:text-white">Facility Management</a>
+        </div>
+      </div>
+
+      <a href="/transformation" class="tf-mobile-link text-gray hover:text-primary">Transformation</a>
+      <a href="/career" class="tf-mobile-link text-gray hover:text-primary">Career</a>
+      <a href="/contact" class="tf-mobile-link text-gray hover:text-primary">Contact</a>
+
+      <a href="/contact" class="bg-primary text-black font-cta text-lg px-8 py-3 rounded-lg text-center mt-3">
+        START TODAY
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- =========================== HERO + CONTACT FORM =========================== -->
+
+<section class="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
+  <div class="absolute inset-0 z-0">
+    <img src="/assets/images/gym-shot-1.jpg" alt="ThriveFit DXB Premium Gym Facility" class="w-full h-full object-cover opacity-20"
+         onerror="this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80'">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-gray-900/80 to-black"></div>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12 animate-fade-in">
+        <h1 class="font-headline text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">
+          Start your <span class="text-gradient-gold">Transformation</span> Today!
+        </h1>
+        <p class="text-gray text-lg md:text-xl max-w-2xl mx-auto">
+          Thrive Fit DXB is a team of highly qualified and experienced professionals driven by the same passion for a healthy lifestyle.
+          Offering personal training, group classes, corporate wellness, kids classes & nutrition seminars.
+        </p>
+      </div>
+
+  <div class="grid lg:grid-cols-5 gap-8">
+    <!-- Contact Form -->
+    <div class="lg:col-span-3">
+      <form id="contact-form" class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-8 space-y-6 animate-slide-up">
+        <h2 class="font-headline text-2xl font-bold text-primary mb-2">Book Your Free Consultation</h2>
+        <p class="text-gray-light text-sm mb-6">Fill out the form and we'll get back to you within 2 hours</p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label for="first-name" class="block text-sm font-semibold mb-2 text-gray-light">First Name *</label>
+            <input type="text" id="first-name" name="first-name" required class="form-input w-full bg-blue-950/30 border-blue-800/40" placeholder="John">
+          </div>
+          <div>
+            <label for="last-name" class="block text-sm font-semibold mb-2 text-gray-light">Last Name *</label>
+            <input type="text" id="last-name" name="last-name" required class="form-input w-full bg-blue-950/30 border-blue-800/40" placeholder="Doe">
+          </div>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-semibold mb-2 text-gray-light">Email Address *</label>
+          <input type="email" id="email" name="email" required class="form-input w-full bg-blue-950/30 border-blue-800/40" placeholder="john.doe@example.com">
+        </div>
+
+        <div>
+          <label for="phone" class="block text-sm font-semibold mb-2 text-gray-light">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" required class="form-input w-full bg-blue-950/30 border-blue-800/40" placeholder="+971 XX XXX XXXX">
+        </div>
+
+        <div>
+          <label for="program-interest" class="block text-sm font-semibold mb-2 text-gray-light">Program Interest *</label>
+          <select id="program-interest" name="program-interest" required class="form-input w-full bg-blue-950/30 border-blue-800/40">
+            <option value="">Training Preferences</option>
+            <option value="personal-training">Gym Personal Training</option>
+            <option value="online-coaching">At-Home Training</option>
+            <option value="corporate-fitness">Corporate Fitness</option>
+            <option value="children-fitness">Children’s Fitness</option>
+            <option value="facility-management">Facility Management</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="coach-preference" class="block text-sm font-semibold mb-2 text-gray-light">Coach Preference</label>
+          <select id="coach-preference" name="coach-preference" class="form-input w-full bg-blue-950/30 border-blue-800/40">
+            <option value="">No preference</option>
+            <option value="Amine">Marko Perun</option>
+            <option value="Martyna">Mike</option>
+            <option value="Martyna">Nemanja Duranovic</option>
+            <option value="Martyna">Farzane Farah</option>
+            <option value="Martyna">Negin</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-semibold mb-2 text-gray-light">Message</label>
+          <textarea id="message" name="message" rows="4" class="form-input w-full resize-none bg-blue-950/30 border-blue-800/40" placeholder="Tell us about your fitness goals..."></textarea>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <input type="checkbox" id="privacy-consent" name="privacy-consent" required class="mt-1 w-4 h-4 text-primary bg-surface border-gray rounded focus:ring-primary">
+          <label for="privacy-consent" class="text-sm text-gray-light">
+            I agree to the <a href="/privacy-policy" class="text-primary hover:underline">Privacy Policy</a> and consent to being contacted about my inquiry. Your data is protected and will never be shared with third parties.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary w-full">SUBMIT INQUIRY</button>
+
+        <div id="form-success" class="hidden success-message"><strong>Success!</strong> Your message has been sent. We'll contact you within 2 hours.</div>
+        <div id="form-error" class="hidden error-message"><strong>Error!</strong> Something went wrong. Please try again or contact us directly.</div>
+      </form>
+    </div>
+
+    <!-- Sidebar info -->
+    <div class="lg:col-span-2 space-y-6">
+      <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6 animate-slide-up" style="animation-delay:.1s;">
+        <h3 class="font-headline text-xl font-bold text-primary mb-4">Direct Contact</h3>
+
+        <div class="flex items-start gap-4 mb-4 pb-4 border-b border-blue-800/30">
+          <div class="bg-blue-900/40 p-3 rounded-lg border border-blue-800/30">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm text-gray-light mb-1">Phone</p>
+            <a href="tel:+971507728708" class="text-white hover:text-primary transition-300 font-semibold">+971 50 772 8708</a>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 mb-4 pb-4 border-b border-blue-800/30">
+          <div class="bg-blue-900/40 p-3 rounded-lg border border-blue-800/30">
+            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm text-gray-light mb-1">WhatsApp</p>
+            <a href="https://wa.me/971507728708" target="_blank" class="text-white hover:text-primary transition-300 font-semibold">+971 50 772 8708</a>
+            <p class="text-xs text-gray-light mt-1">Instant messaging available</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="bg-blue-900/40 p-3 rounded-lg border border-blue-800/30">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm text-gray-light mb-1">Email</p>
+            <a href="mailto:info@thrivefitdxb.com" class="text-white hover:text-primary transition-300 font-semibold">info@thrivefitdxb.com</a>
+            <p class="text-xs text-gray-light mt-1">2-hour response guarantee</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6 animate-slide-up" style="animation-delay:.2s;">
+        <h3 class="font-headline text-xl font-bold text-primary mb-4">Business Hours</h3>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-gray-light">Everyday</span>
+            <span class="text-white font-semibold">6:00 AM - 10:00 PM</span>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+<!-- =========================== LOCATION =========================== -->
+
+<section class="py-20 bg-gradient-to-b from-black to-gray-900">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-headline text-3xl md:text-5xl font-extrabold mb-4">
+          Visit Our <span class="text-gradient-gold">Premium Facility</span>
+        </h2>
+        <p class="text-gray text-lg max-w-2xl mx-auto">
+          Located in the heart of Dubai, our state-of-the-art facility offers world-class equipment and an exclusive training environment.
+        </p>
+      </div>
+
+  <div class="grid lg:grid-cols-2 gap-8">
+    <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-2 overflow-hidden">
+      <div class="relative rounded-xl overflow-hidden h-96">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3611.9980878403017!2d55.217658899999996!3d25.135755500000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6bd3cd8e4aad%3A0x5014da9549a0ff82!2sTrain%20Strength%20%26%20Fitness!5e0!3m2!1sfr!2sae!4v1765278774641!5m2!1sfr!2sae"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="rounded-lg"></iframe>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="bg-blue-900/40 p-3 rounded-lg border border-blue-800/30">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-headline text-xl font-bold text-primary mb-2">Address</h3>
+            <p class="text-white font-semibold">ThriveFit DXB</p>
+            <p class="text-gray-light">6 4th St - Al Qouz Ind.third</p>
+            <p class="text-gray-light">Al Quoz - Dubai</p>
+            <p class="text-gray-light">United Arab Emirates</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6">
+        <h3 class="font-headline text-xl font-bold text-primary mb-4">Getting Here</h3>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-primary mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+            <div>
+              <p class="text-white font-semibold">By Metro</p>
+              <p class="text-gray-light text-sm">15 minutes walk from the nearest Metro Station</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-primary mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
+            <div>
+              <p class="text-white font-semibold">By Car</p>
+              <p class="text-gray-light text-sm">RTA parking spaces are available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://maps.google.com/?q=Dubai+Marina+UAE" target="_blank" class="btn-secondary w-full text-center block">
+        Get Directions on Google Maps
+      </a>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+<!-- =========================== FAQ =========================== -->
+
+<section class="py-20 bg-gradient-to-b from-gray-900 to-black">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-headline text-3xl md:text-5xl font-extrabold mb-4">
+          Frequently Asked <span class="text-gradient-gold">Questions</span>
+        </h2>
+        <p class="text-gray text-lg">Quick answers to common inquiries. Can't find what you're looking for? Contact us directly.</p>
+      </div>
+
+
+  <div class="space-y-4">
+    <!-- Repeat FAQ items (unchanged content) -->
+    <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6 cursor-pointer faq-item">
+      <div class="flex justify-between items-start gap-4">
+        <div class="flex-1">
+          <h3 class="faq-question font-headline text-xl font-bold text-primary mb-2">What are your pricing options?</h3>
+          <div class="faq-answer hidden">
+            <p class="text-gray-light mt-2">Packages range from <strong>250–350 AED per session</strong>, depending on volume and frequency.</p>
+            <p class="text-gray-light mt-2">Book a free consultation to discuss custom packages tailored to your goals.</p>
+          </div>
+        </div>
+        <svg class="faq-icon w-6 h-6 text-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6 cursor-pointer faq-item">
+      <div class="flex justify-between items-start gap-4">
+        <div class="flex-1">
+          <h3 class="faq-question font-headline text-xl font-bold text-primary mb-2">What I can expect during my first FREE trial session?</h3>
+          <div class="faq-answer hidden">
+            <p class="text-gray-light mt-2">Your first session includes a brief consultation, movement assessment, and light training so we can understand your goals, fitness level, and preferences. From there, we build a customized plan for you.</p>
+            <p class="text-gray-light mt-2">Book a free consultation to discuss custom packages tailored to your goals.</p>
+          </div>
+        </div>
+        <svg class="faq-icon w-6 h-6 text-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6 cursor-pointer faq-item">
+      <div class="flex justify-between items-start gap-4">
+        <div class="flex-1">
+          <h3 class="faq-question font-headline text-xl font-bold text-primary mb-2">How can I choose the best package?</h3>
+          <div class="faq-answer hidden">
+            <p class="text-gray-light mt-2">Message us with your goals and schedule. We’ll recommend the most efficient plan.</p>
+          </div>
+        </div>
+        <svg class="faq-icon w-6 h-6 text-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- (More FAQ items unchanged) -->
+    <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6 cursor-pointer faq-item">
+      <div class="flex justify-between items-start gap-4">
+        <div class="flex-1">
+          <h3 class="faq-question font-headline text-xl font-bold text-primary mb-2">Do I need experience to start?</h3>
+          <div class="faq-answer hidden">
+            <p class="text-gray-light mt-2">We offer programs for beginners to competitors with safe, effective coaching.</p>
+          </div>
+        </div>
+        <svg class="faq-icon w-6 h-6 text-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6 cursor-pointer faq-item">
+      <div class="flex justify-between items-start gap-4">
+        <div class="flex-1">
+          <h3 class="faq-question font-headline text-xl font-bold text-primary mb-2">Do you offer nutrition guidance?</h3>
+          <div class="faq-answer hidden">
+            <p class="text-gray-light mt-2">Yes — sustainable, tailored nutrition with full accountability in transformation programs.</p>
+          </div>
+        </div>
+        <svg class="faq-icon w-6 h-6 text-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6 cursor-pointer faq-item">
+      <div class="flex justify-between items-start gap-4">
+        <div class="flex-1">
+          <h3 class="faq-question font-headline text-xl font-bold text-primary mb-2">Can I train with a friend or partner?</h3>
+          <div class="faq-answer hidden">
+            <p class="text-gray-light mt-2">Yes, Duo Training lets two people share a session and cost — great for couples or friends.</p>
+          </div>
+        </div>
+        <svg class="faq-icon w-6 h-6 text-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6 cursor-pointer faq-item">
+      <div class="flex justify-between items-start gap-4">
+        <div class="flex-1">
+          <h3 class="faq-question font-headline text-xl font-bold text-primary mb-2">What is your cancellation policy?</h3>
+          <div class="faq-answer hidden">
+            <p class="text-gray-light mt-2">Sessions can be rescheduled with 12–24 hours’ notice. Late cancellations are charged.</p>
+          </div>
+        </div>
+        <svg class="faq-icon w-6 h-6 text-primary transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 text-center">
+    <p class="text-gray mb-4">Still have questions?</p>
+    <a href="#contact-form" class="btn-primary inline-block">Contact Us Directly</a>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+<!-- =========================== SOCIAL PROOF =========================== -->
+
+<section class="py-20 bg-gradient-to-b from-black to-gray-900">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-headline text-3xl md:text-5xl font-extrabold mb-6">Stay Connected with <span class="text-gradient-gold">ThriveFit</span></h2>
+      <p class="text-gray text-lg mb-8">Follow our journey, see daily transformations, and get exclusive tips from our expert coaches.</p>
+
+
+  <div class="flex justify-center gap-6 mb-12">
+    <a href="https://www.instagram.com/thrivefitdxb/" target="_blank" class="glass-card-hover bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6 flex flex-col items-center gap-3 w-40 group">
+      <svg class="w-10 h-10 text-primary group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      <span class="text-white font-semibold">Instagram</span>
+      <span class="text-gray-light text-sm">@thrivefitdxb</span>
+    </a>
+
+    <a href="https://www.linkedin.com/company/thrivefitdxb" target="_blank" class="glass-card-hover bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6 flex flex-col items-center gap-3 w-40 group">
+      <svg class="w-10 h-10 text-primary group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <span class="text-white font-semibold">LinkedIn</span>
+      <span class="text-gray-light text-sm">ThriveFit DXB</span>
+    </a>
+
+    <a href="https://facebook.com/thrivefitdxb" target="_blank" class="glass-card-hover bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6 flex flex-col items-center gap-3 w-40 group">
+      <svg class="w-10 h-10 text-primary group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      <span class="text-white font-semibold">Facebook</span>
+      <span class="text-gray-light text-sm">ThriveFit DXB</span>
+    </a>
+  </div>
+
+  <div class="grid grid-cols-3 gap-6 max-w-3xl mx-auto">
+    <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6">
+      <p class="text-3xl md:text-4xl font-headline font-extrabold text-primary mb-2">500+</p>
+      <p class="text-gray-light text-sm">Clients Transformed</p>
+    </div>
+    <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6">
+      <p class="text-3xl md:text-4xl font-headline font-extrabold text-primary mb-2">4.9/5</p>
+      <p class="text-gray-light text-sm">Average Rating</p>
+    </div>
+    <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-6">
+      <p class="text-3xl md:text-4xl font-headline font-extrabold text-primary mb-2">1000+</p>
+      <p class="text-gray-light text-sm">KG Lost Total</p>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+<!-- =========================== CALLBACK CTA =========================== -->
+
+<section class="py-20 bg-gradient-to-b from-gray-900 to-black">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass-card bg-blue-950/30 backdrop-blur-xl border-blue-800/40 p-8 md:p-12 text-center">
+        <div class="inline-block bg-black/40 backdrop-blur-sm border border-primary/60 px-6 py-2 rounded-full mb-4">
+          <span class="font-cta text-primary font-bold uppercase tracking-widest text-sm">Premium Service</span>
+        </div>
+        <h2 class="font-headline text-3xl md:text-5xl font-extrabold mb-4">
+          Prefer a <span class="text-gradient-gold">Personal Call?</span>
+        </h2>
+        <p class="text-gray text-lg mb-8 max-w-2xl mx-auto">
+          Schedule a callback at your convenience. Our team will reach out to discuss your fitness goals and how we can help you achieve them.
+        </p>
+
+
+    <form id="callback-form" class="max-w-2xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+        <input type="text" placeholder="Your Name" required class="form-input bg-blue-950/30 border-blue-800/40">
+        <input type="tel" placeholder="Phone Number" required class="form-input bg-blue-950/30 border-blue-800/40">
+      </div>
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+        <select required class="form-input bg-blue-950/30 border-blue-800/40">
+          <option value="">Preferred Time</option>
+          <option value="morning">Morning (8am-12pm)</option>
+          <option value="afternoon">Afternoon (12pm-5pm)</option>
+          <option value="evening">Evening (5pm-9pm)</option>
+        </select>
+        <select required class="form-input bg-blue-950/30 border-blue-800/40">
+          <option value="">Preferred Day</option>
+          <option value="today">Today</option>
+          <option value="tomorrow">Tomorrow</option>
+          <option value="this-week">This Week</option>
+          <option value="next-week">Next Week</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-primary w-full md:w-auto px-12">Request Callback</button>
+    </form>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+<!-- =========================== PRIVACY NOTE =========================== -->
+
+<section class="py-12 bg-gradient-to-b from-black to-black">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        <h3 class="font-headline text-xl font-bold text-primary">Your Privacy Matters</h3>
+      </div>
+      <p class="text-gray-light text-sm max-w-3xl mx-auto">
+        All information submitted through our contact forms is encrypted and protected. We never share your personal data with third parties.
+        Your contact information is used solely for responding to your inquiries and providing the services you request.
+        Read our full <a href="/privacy-policy" class="text-primary hover:underline">Privacy Policy</a> and
+        <a href="/terms-of-service" class="text-primary hover:underline">Terms of Service</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black border-t border-white/10 py-16">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div class="md:col-span-1">
+        <div class="flex items-center gap-3 mb-6">
+          <a href="/" aria-label="Home">
+            <img src="/assets/images/logo.png"
+                 alt="ThriveFit DXB logo"
+                 class="h-14 w-auto object-contain"
+                 loading="lazy"
+                 decoding="async">
+          </a>
+        </div>
+
+        <p class="text-gray text-sm mb-6">
+          Elite personal trainers coming to your home, office, or outdoor space in Dubai. No gym required.
+        </p>
+
+        <div class="flex items-center gap-4">
+          <a href="https://www.facebook.com/people/Thrive-Fit-Dxb/61584039750159/" class="text-gray hover:text-primary transition-colors" aria-label="Facebook">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/thrivefitdxb/" class="text-gray hover:text-primary transition-colors" aria-label="Instagram">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@thrive.fit.dxb?lang=en-GB" class="text-gray hover:text-primary transition-colors" aria-label="TikTok">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12.75 3a.75.75 0 0 1 .75-.75h2.72a6.9 6.9 0 0 0 2.17 4.13 6.9 6.9 0 0 0 4.11 1.51v2.73a9.4 9.4 0 0 1-3.5-.66 9.1 9.1 0 0 1-1.98-1.05v7.13A6.99 6.99 0 1 1 9 9.9c.64 0 1.26.07 1.86.21v2.85a3.6 3.6 0 1 0 2.64 3.47V3Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-headline text-lg font-bold text-white mb-4">Quick Links</h4>
+        <ul class="space-y-3">
+          <li><a href="/" class="text-gray hover:text-primary transition-colors">Home</a></li>
+          <li><a href="/about" class="text-gray hover:text-primary transition-colors">About Us</a></li>
+          <li><a href="/career" class="text-gray hover:text-primary transition-colors">Career</a></li>
+          <li><a href="/transformation" class="text-gray hover:text-primary transition-colors">Transformations</a></li>
+          <li><a href="/contact" class="text-gray hover:text-primary transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-headline text-lg font-bold text-white mb-4">Training Options</h4>
+        <ul class="space-y-3">
+          <li><a href="/gym-personal-training" class="text-gray hover:text-primary transition-colors">Gym Personal Training</a></li>
+          <li><a href="/outdoor-training" class="text-gray hover:text-primary transition-colors">Outdoor Training</a></li>
+          <li><a href="/at-home-training" class="text-gray hover:text-primary transition-colors">At-Home Training</a></li>
+          <li><a href="/corporate-fitness" class="text-gray hover:text-primary transition-colors">Corporate Fitness</a></li>
+          <li><a href="/children-fitness" class="text-gray hover:text-primary transition-colors">Children-Fitness</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-headline text-lg font-bold text-white mb-4">Contact Us</h4>
+        <ul class="space-y-3 text-gray">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <span class="text-sm">Serving all Dubai areas</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            <a href="mailto:info@thrivefitdxb.com" class="text-sm hover:text-primary transition-colors">info@thrivefitdxb.com</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+            <a href="tel:+971507728708" class="text-sm hover:text-primary transition-colors">+971 50 772 8708</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-gray text-sm">© 2025 ThriveFit DXB. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="/privacy-policy" class="text-gray hover:text-primary transition-colors text-sm">Privacy Policy</a>
+        <a href="/terms-of-service" class="text-gray hover:text-primary transition-colors text-sm">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================== SUCCESS MODAL ================== -->
+<div id="enquiryModal" class="tf-modal" aria-hidden="true">
+  <div class="tf-backdrop" data-close></div>
+  <div class="tf-card" role="dialog" aria-modal="true" aria-labelledby="enq_title">
+    <div class="tf-hd" id="enq_title">Thanks! We’ve got your enquiry.</div>
+    <div class="tf-bd">
+      <p class="text-gray-200 mb-2">Our team will contact you within <strong>2 hours</strong>.</p>
+      <p class="text-gray-400 text-sm">You can close this window or go back to the homepage.</p>
+    </div>
+    <div class="tf-ft">
+      <button class="btn btn-ghost" data-close>Close</button>
+      <a href="/" class="btn btn-primary">Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================== PAGE SCRIPTS (single source of truth) ================== -->
+<script>
+  // ---------- Supabase client: define ONCE ----------
+  const SUPABASE_URL = 'https://fhiivigvbopjgnwmzbnj.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZoaWl2aWd2Ym9wamdud216Ym5qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUzOTIyMDUsImV4cCI6MjA4MDk2ODIwNX0.qGNBiksmCfXtKWV-malZRmjGEfmuedAkV8K_NArlbKM';
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // ---------- Helpers ----------
+  const qs = (sel, root=document) => root.querySelector(sel);
+  const qsa = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+  const disable = (btn, on=true) => { if(!btn) return; btn.disabled = !!on; btn.style.opacity = on ? .6 : 1; };
+  const fullName = (first, last) => [first,last].map(v => (v||'').trim()).filter(Boolean).join(' ');
+  const programLabel = (val) => ({
+    'personal-training': 'Gym Personal Training',
+    'online-coaching': 'At-Home Training',
+    'corporate-fitness': 'Corporate Fitness',
+    'children-fitness': 'Children’s Fitness',
+    'facility-management': 'Facility Management'
+  }[val] || 'General Enquiry');
+
+  // ---------- Modal ----------
+  const modal = qs('#enquiryModal');
+  const showModal = () => { modal.classList.add('show'); document.body.classList.add('overflow-hidden'); };
+  const hideModal = () => { modal.classList.remove('show'); document.body.classList.remove('overflow-hidden'); };
+  qsa('[data-close]', modal).forEach(el => el.addEventListener('click', hideModal));
+  modal.addEventListener('click', e => { if (e.target.classList.contains('tf-backdrop')) hideModal(); });
+
+  // ---------- Nav / Menus ----------
+  document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('navbar');
+    const updateNav = () => (window.scrollY > 8) ? nav.classList.add('nav-scrolled') : nav.classList.remove('nav-scrolled');
+    updateNav(); window.addEventListener('scroll', updateNav, { passive: true });
+
+    // Desktop dropdown
+    (function() {
+      const root = document.querySelector('.nav-services');
+      if (!root) return;
+      const btn = root.querySelector('.nav-services-btn');
+      const open = () => { root.classList.add('show'); btn.setAttribute('aria-expanded','true'); };
+      const close = () => { root.classList.remove('show'); btn.setAttribute('aria-expanded','false'); };
+      btn.addEventListener('click', e => { e.stopPropagation(); root.classList.contains('show') ? close() : open(); });
+      document.addEventListener('click', e => { if (!root.contains(e.target)) close(); });
+    })();
+
+    // Mobile menu
+    (function(){
+      const menu = document.getElementById('tf-mobile-menu');
+      const btn = document.querySelector('.tf-hamburger');
+      btn?.addEventListener('click', e => { e.stopPropagation(); menu.classList.toggle('hidden'); });
+      document.addEventListener('click', e => { if (!menu.contains(e.target) && !btn.contains(e.target)) menu.classList.add('hidden'); });
+    })();
+
+    // Mobile services accordion
+    (function(){
+      const btn = document.querySelector('.tf-mobile-services-btn');
+      const panel = document.getElementById('tf-mobile-services-panel');
+      btn?.addEventListener('click', () => panel.classList.toggle('hidden'));
+    })();
+
+    // FAQ accordion (single handler)
+    qsa('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-icon');
+        // Close others
+        qsa('.faq-item').forEach(other => {
+          if (other !== item) {
+            other.querySelector('.faq-answer')?.classList.add('hidden');
+            other.querySelector('.faq-icon')?.classList.remove('rotate-180');
+          }
+        });
+        answer.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180');
+      });
+    });
+
+    // Animate on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        entry.target.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)';
+        } else {
+          entry.target.style.opacity = '0'; entry.target.style.transform = 'translateY(20px)';
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    qsa('.glass-card, .luxury-card, .animate-slide-up, .animate-fade-in').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(20px)'; observer.observe(el); });
+  });
+
+  // ---------- CONTACT FORM ----------
+  (function wireContactForm(){
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    // hidden honeypot (anti-bot)
+    if (!form.querySelector('input[name="website"]')) {
+      const hp = document.createElement('input');
+      hp.type = 'text'; hp.name = 'website'; hp.tabIndex = -1; hp.autocomplete = 'off'; hp.style.position='absolute'; hp.style.left='-5000px';
+      form.appendChild(hp);
+    }
+
+    const successMsg = document.getElementById('form-success');
+    const errorMsg = document.getElementById('form-error');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      successMsg.classList.add('hidden');
+      errorMsg.classList.add('hidden');
+
+      if (form.website?.value) return; // bot
+
+      const first = qs('#first-name')?.value || '';
+      const last  = qs('#last-name')?.value || '';
+      const email = qs('#email')?.value || '';
+      const phone = qs('#phone')?.value || '';
+      const program = qs('#program-interest')?.value || '';
+      const coach   = qs('#coach-preference')?.value || '';
+      const message = qs('#message')?.value || '';
+      const consent = qs('#privacy-consent');
+
+      if (!consent.checked) {
+        errorMsg.textContent = 'Please confirm privacy consent to proceed.';
+        errorMsg.classList.remove('hidden');
+        return;
+      }
+
+      const subject = programLabel(program) + (coach ? ` (Coach ${coach})` : '');
+      const btn = form.querySelector('button[type="submit"]');
+      disable(btn, true);
+
+      try {
+        const { error } = await sb.from('enquiries').insert({
+          full_name: fullName(first, last),
+          email,
+          phone,
+          subject,
+          message,
+          source: 'contact-form',
+          status: 'new'
+        });
+        if (error) throw error;
+
+        successMsg.classList.remove('hidden');
+        form.reset();
+        showModal();
+        setTimeout(() => successMsg.classList.add('hidden'), 5000);
+      } catch (err) {
+        console.error(err);
+        errorMsg.textContent = err.message || 'Submission failed. Please try again.';
+        errorMsg.classList.remove('hidden');
+      } finally {
+        disable(btn, false);
+      }
+    });
+  })();
+
+  // ---------- CALLBACK FORM ----------
+  (function wireCallbackForm(){
+    const form = document.getElementById('callback-form');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const inputs = form.querySelectorAll('input, select');
+      const btn = form.querySelector('button[type="submit"]');
+
+      const name = inputs[0]?.value || '';
+      const phone = inputs[1]?.value || '';
+      const prefTime = inputs[2]?.value || '';
+      const prefDay  = inputs[3]?.value || '';
+
+      const subject = 'Callback Request';
+      const message = `Preferred Time: ${prefTime || '—'} | Preferred Day: ${prefDay || '—'}`;
+
+      disable(btn, true);
+      try {
+        const { error } = await sb.from('enquiries').insert({
+          full_name: name,
+          email: 'n/a',
+          phone,
+          subject,
+          message,
+          source: 'callback-form',
+          status: 'new'
+        });
+        if (error) throw error;
+        form.reset();
+        showModal();
+      } catch (err) {
+        console.error(err);
+        alert(err.message || 'Could not send your request. Please try again.');
+      } finally {
+        disable(btn, false);
+      }
+    });
+  })();
+
+  // ---------- Input niceties ----------
+  qsa('input[type="tel"]').forEach(input => {
+    input.addEventListener('input', e => {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.startsWith('971')) e.target.value = '+' + value;
+    });
+  });
+  qsa('[required]').forEach(input => {
+    input.addEventListener('blur', function(){ this.classList.toggle('border-error', !this.value.trim()); });
+    input.addEventListener('input', function(){ if (this.value.trim()) this.classList.remove('border-error'); });
+  });
+</script>
+
+<!-- ✅ Absolute injector path (works with /contact clean URL) -->
+<script id="dhws-dataInjector" src="/public/dhws-data-injector.js"></script>
+
+</body>
+</html>

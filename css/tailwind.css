@@ -1,0 +1,164 @@
+/* FILE: css/main.css  (replace your current file with this corrected one) */
+/* 1) Google Fonts — ensure 400..800 are loaded for body + CTA */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 2) HARD OVERRIDE — forces Montserrat even if utilities fail to load.
+      Keep this at top-level (outside @layer) for maximum specificity. */
+html, body {
+  font-family: 'Montserrat', 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+@layer base {
+  :root {
+    /* ThriveFit DXB Brand Colors */
+    --color-primary: #D6B56F;
+    --color-primary-dark: #C4A55F;
+    --color-primary-light: #E0C89F;
+
+    --color-black: #0A0A0A;
+    --color-white: #FFFFFF;
+    --color-gray: #CCCCCC;
+    --color-glass: rgba(255,255,255,0.1);
+
+    --color-background: #0A0A0A;
+    --color-background-light: #1a1a1a;
+
+    --color-surface: #1a1a1a;
+    --color-surface-light: #2a2a2a;
+    --color-surface-dark: #0A0A0A;
+
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #CCCCCC;
+    --color-text-muted: #808080;
+
+    --color-border: #D6B56F;
+    --color-border-focus: #E0C89F;
+
+    --shadow-cta: 0 10px 30px rgba(214, 181, 111, 0.3);
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --shadow-elevated: 0 8px 25px rgba(0, 0, 0, 0.4);
+    --shadow-glass: 0 8px 32px 0 rgba(214, 181, 111, 0.1);
+  }
+
+  /* Uses Tailwind utility if generated; hard override above still wins */
+  body {
+    @apply bg-black text-white font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline font-extrabold;
+  }
+
+  h1 { @apply text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight; }
+  h2 { @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight; }
+  h3 { @apply text-2xl md:text-3xl lg:text-4xl font-bold; }
+  h4 { @apply text-xl md:text-2xl font-bold; }
+
+  button, .btn {
+    @apply font-cta font-semibold transition-all duration-300 ease-in-out;
+  }
+
+  input, textarea, select {
+    @apply transition-all duration-200 ease-in-out;
+  }
+}
+
+@layer components {
+  .btn-primary  {
+    @apply bg-primary text-black px-8 py-4 rounded-lg font-cta font-bold text-lg uppercase tracking-wider;
+    @apply hover:scale-105 active:scale-95;
+    @apply transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-primary px-8 py-4 rounded-lg font-cta font-bold text-lg uppercase tracking-wider;
+    @apply border-2 border-primary hover:bg-primary hover:text-black;
+    @apply transition-all duration-300;
+  }
+
+  .btn-ghost {
+    @apply bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-lg font-cta font-semibold text-lg;
+    @apply border border-primary/30 hover:border-primary hover:bg-white/20;
+    @apply transition-all duration-300;
+  }
+
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-primary/20;
+    box-shadow: var(--shadow-glass);
+  }
+  .glass-card-hover  {
+    @apply glass-card hover:bg-white/15 hover:border-primary/40;
+    @apply transition-all duration-300;
+  }
+
+  .luxury-card  {
+    @apply rounded-2xl p-8 border border-primary/20;
+    box-shadow: var(--shadow-elevated);
+    @apply hover:border-primary/60 transition-all duration-300;
+  }
+
+  .form-input  {
+    @apply text-white px-4 py-3 rounded-lg;
+    @apply border border-gray/30 focus:border-primary focus:outline-none;
+    @apply transition-all duration-200;
+  }
+  .form-input:focus {
+    border-width: 2px;
+    box-shadow: 0 0 0 3px rgba(214, 181, 111, 0.1);
+  }
+
+  .text-gradient-gold  {
+    @apply bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent;
+  }
+
+  .section-divider { @apply w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto; }
+
+  .stat-badge {
+    @apply inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm border border-primary/30;
+    @apply px-6 py-3 rounded-full font-cta text-primary font-semibold;
+  }
+
+  .coach-card  {
+    @apply relative overflow-hidden rounded-2xl cursor-pointer;
+    @apply transition-all duration-500 hover:scale-105;
+  }
+  .coach-card::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent;
+    @apply transition-opacity duration-300;
+  }
+  .coach-card:hover::after { @apply opacity-80; }
+
+  .tier-badge {
+    @apply inline-block px-4 py-1 rounded-full text-xs font-cta font-bold uppercase tracking-widest;
+    @apply bg-primary/20 text-primary border border-primary/40;
+  }
+
+  .success-message  { @apply border px-4 py-3 rounded-lg; }
+  .error-message    { @apply border px-4 py-3 rounded-lg; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .transition-250 { transition: all 250ms ease-in-out; }
+  .transition-300 { transition: all 300ms ease-in-out; }
+
+  .shadow-cta { box-shadow: var(--shadow-cta); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-elevated { box-shadow: var(--shadow-elevated); }
+  .shadow-glass { box-shadow: var(--shadow-glass); }
+
+  .scrollbar-thin::-webkit-scrollbar { width: 8px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { @apply bg-primary rounded-full; }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover { }
+  .scrollbar-thin::-webkit-scrollbar-track { }
+}
