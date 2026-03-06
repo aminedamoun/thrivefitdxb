@@ -6,3 +6,4 @@ package-lock.json
 *.zip
 public/dhws.zip
 assets/images.zip
+.env
