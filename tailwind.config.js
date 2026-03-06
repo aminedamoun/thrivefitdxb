@@ -3,8 +3,9 @@
 export default {
   content: [
     "./index.html",
-    "./**/*.{html,js,ts,jsx,tsx}",   // ensure nested pages are scanned
-    "./css/**/*.{css}"               // include your CSS that uses @apply
+    "./pages/**/*.html",
+    "./public/**/*.{html,js}",
+    "./css/**/*.css"
   ],
   theme: {
     extend: {
@@ -14,8 +15,12 @@ export default {
         headline: ['Bebas Neue', 'Oswald', 'Montserrat', 'sans-serif'],
       },
       colors: {
-        primary: 'var(--color-primary)',
-        secondary: 'var(--color-primary-dark)',
+        primary: {
+          DEFAULT: '#D6B56F',
+          dark: '#C4A55F',
+          light: '#E0C89F',
+        },
+        secondary: '#C4A55F',
         gray: '#CCCCCC',
         black: '#0A0A0A',
         white: '#FFFFFF',
@@ -24,27 +29,3 @@ export default {
   },
   plugins: [],
 };
-document.getElementById('sendResultBtn').addEventListener('click', () => {
-    const subject = `New Transformation Calculator Request`;
-
-    const body = `
-A new client submitted their transformation result:
-
-Current Weight: ${calculatorData.weight} ${calculatorData.unit}
-Training Days/Week: ${calculatorData.days}
-Goal: ${calculatorData.intensity}
-
-Estimated Weeks: ${document.getElementById('estimatedWeeks').textContent}
-Estimated KG Change: ${document.getElementById('estimatedLoss').textContent}
-Target Weight: ${document.getElementById('targetWeight').textContent}
-
-Please follow up with the client.
-`;
-
-    window.location.href = `mailto:info@thrivefitdxb.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-});
-
-// Recalculate
-document.getElementById('recalculateBtn').addEventListener('click', () => {
-    location.reload();
-});
