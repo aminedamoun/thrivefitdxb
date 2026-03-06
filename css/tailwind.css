@@ -145,6 +145,57 @@ html, body {
 
   .success-message  { @apply border px-4 py-3 rounded-lg; }
   .error-message    { @apply border px-4 py-3 rounded-lg; }
+
+  .tfx-section {
+    @apply py-20 bg-gradient-to-b from-black via-secondary/10 to-black;
+  }
+
+  .tfx-card {
+    @apply relative;
+  }
+
+  .tfx-media {
+    @apply relative overflow-hidden rounded-2xl aspect-square border border-blue-800/30;
+  }
+
+  .tfx-media img {
+    @apply w-full h-full object-cover transition-transform duration-500;
+  }
+
+  .tfx-card:hover .tfx-media img {
+    @apply scale-110;
+  }
+
+  .tfx-media::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent;
+  }
+
+  .tfx-body {
+    @apply mt-4;
+  }
+
+  .tfx-badge {
+    @apply bg-primary/20 text-primary px-4 py-1 rounded-full text-lg font-bold;
+  }
+
+  .tfx-scroller {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tfx-scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    .tfx-card {
+      flex: 0 0 85%;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+  }
 }
 
 @layer utilities {

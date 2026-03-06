@@ -24,6 +24,12 @@ export default {
         gray: '#CCCCCC',
         black: '#0A0A0A',
         white: '#FFFFFF',
+        blue: {
+          950: '#0c1e3d',
+          900: '#0f2a52',
+          800: '#1e3a5f',
+          700: '#2d4a6f',
+        },
       },
     },
   },
