@@ -1,50 +1,62 @@
-# /.htaccess (public_html root)
+# /.htaccess (public_html root) — ThriveFit DXB
 
 Options -MultiViews
 RewriteEngine On
 RewriteBase /
 
-# 0) Always load landing page as homepage
+# ------------------------------------------------------------
+# 0) Homepage
+# ------------------------------------------------------------
 DirectoryIndex pages/landing_page.html index.php index.html
 
-# -------------------------------------------------------------------
-# A) CANONICAL: force HTTPS + preferred host (prevents duplicate SEO URLs)
-# -------------------------------------------------------------------
+# ------------------------------------------------------------
+# A) CANONICAL: force HTTPS + preferred host
+# ------------------------------------------------------------
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} !^thrivefitdxb\.ae$ [NC]
 RewriteRule ^ https://thrivefitdxb.ae%{REQUEST_URI} [R=301,L]
 
-# -------------------------------------------------------------------
-# B) REDIRECT direct access to /pages/*.html -> clean URL (DO THIS EARLY)
-#    (Fixes your current issue where existing-file bypass blocks redirects)
-# -------------------------------------------------------------------
+# ------------------------------------------------------------
+# B) REDIRECT direct access to /pages/*.html -> clean URLs (EARLY)
+# ------------------------------------------------------------
 RewriteRule ^pages/landing_page\.html$ / [R=301,L]
 RewriteRule ^pages/about\.html$ /about [R=301,L]
 RewriteRule ^pages/contact\.html$ /contact [R=301,L]
 RewriteRule ^pages/career\.html$ /career [R=301,L]
 RewriteRule ^pages/transformation_nutrition_hub\.html$ /transformation [R=301,L]
+
 RewriteRule ^pages/gym-personal-training\.html$ /gym-personal-training [R=301,L]
 RewriteRule ^pages/at_home_training_service\.html$ /at-home-training [R=301,L]
 RewriteRule ^pages/outdoor_training_service\.html$ /outdoor-training [R=301,L]
 RewriteRule ^pages/corporate-fitness\.html$ /corporate-fitness [R=301,L]
 RewriteRule ^pages/children-fitness\.html$ /children-fitness [R=301,L]
 RewriteRule ^pages/facility-management\.html$ /facility-management [R=301,L]
+
 RewriteRule ^pages/privacy-policy\.html$ /privacy-policy [R=301,L]
 RewriteRule ^pages/terms-of-service\.html$ /terms-of-service [R=301,L]
 
-# (Optional) If someone hits any other /pages/*.html, send them home (or 404)
-# RewriteRule ^pages/.*\.html$ / [R=301,L]
+# BLOG: redirect direct file access -> clean URLs
+RewriteRule ^pages/blog\.html$ /blog [R=301,L]
+RewriteRule ^pages/blog-([A-Za-z0-9-]+)\.html$ /blog/$1 [R=301,L]
 
-# -------------------------------------------------------------------
+# BLOG: fix accidental /blog/blog-<slug> links -> /blog/<slug>
+RewriteRule ^blog/blog-([A-Za-z0-9-]+)/?$ /blog/$1 [R=301,L]
+
+# BLOG: old slugs -> current slugs (avoid 404)
+RewriteRule ^blog/beginner-strength-training-dubai-gyms/?$ /blog/beginner-strength-training [R=301,L]
+RewriteRule ^blog/best-gym-routine-busy-professionals-dubai/?$ /blog/busy-professionals-routine [R=301,L]
+RewriteRule ^blog/cardio-vs-weights-fat-loss-dubai/?$ /blog/cardio-vs-weights-fat-loss [R=301,L]
+
+# ------------------------------------------------------------
 # C) Serve real existing files/folders (css/js/images/etc)
-# -------------------------------------------------------------------
+# ------------------------------------------------------------
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# -------------------------------------------------------------------
+# ------------------------------------------------------------
 # D) Clean routes -> /pages/*.html (internal rewrite)
-# -------------------------------------------------------------------
+# ------------------------------------------------------------
 RewriteRule ^$ pages/landing_page.html [L]
 
 RewriteRule ^about/?$ pages/about.html [L]
@@ -62,9 +74,13 @@ RewriteRule ^facility-management/?$ pages/facility-management.html [L]
 RewriteRule ^privacy-policy/?$ pages/privacy-policy.html [L]
 RewriteRule ^terms-of-service/?$ pages/terms-of-service.html [L]
 
-# -------------------------------------------------------------------
-# E) (Optional) Static caching (good for Lighthouse + SEO speed signals)
-# -------------------------------------------------------------------
+# BLOG routes
+RewriteRule ^blog/?$ pages/blog.html [L]
+RewriteRule ^blog/([A-Za-z0-9-]+)/?$ pages/blog-$1.html [L]
+
+# ------------------------------------------------------------
+# E) Static caching
+# ------------------------------------------------------------
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css "access plus 30 days"

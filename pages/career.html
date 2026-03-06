@@ -14,14 +14,39 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17906639561">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'AW-17906639561');
+</script>
   <!-- CSS -->
   <link rel="stylesheet" href="../css/main.css" />
 
   <!-- Rocket scripts (keep once) -->
   <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fsportcoach1836back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.10"></script>
   <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
-
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '828303913602520');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=828303913602520&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
   <style>
     /* ---------- PAGE ANIMATIONS ---------- */
     @keyframes fadeInUp { from {opacity:0; transform:translateY(18px);} to {opacity:1; transform:translateY(0);} }
@@ -265,6 +290,7 @@
 
         <a href="/transformation" class="nav-link text-gray hover:text-primary">TRANSFORMATION</a>
         <a href="/career" class="nav-link text-gray hover:text-primary">CAREER</a>
+        <a href="/blog" class="nav-link text-white hover:text-primary">Blog</a>
         <a href="/contact" class="nav-link text-gray hover:text-primary">CONTACT</a>
       </div>
 
@@ -304,6 +330,7 @@
 
       <a href="/transformation" class="tf-mobile-link text-gray hover:text-primary">Transformation</a>
       <a href="/career" class="tf-mobile-link text-gray hover:text-primary">Career</a>
+      <a href="/blog" class="nav-link text-white hover:text-primary">Blog</a>
       <a href="/contact" class="tf-mobile-link text-gray hover:text-primary">Contact</a>
 
       <a href="/contact" class="bg-primary text-black font-cta text-lg px-8 py-3 rounded-lg text-center mt-3">
@@ -976,24 +1003,47 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.disabled = true;
     submitBtn.textContent = 'Uploading…';
 
-    try{
-      await uploadAndInsert(meta, state.cv, state.certs);
-      msg('Application submitted.', true);
-      form.reset();
-      state={cv:null, certs:[]};
-      renderCV(); renderCerts(); validate();
-    }catch(err){
-      console.error(err);
-      msg(err.message || 'Submission failed.');
-    }finally{
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Submit Application';
-    }
+try{
+  // 1️⃣ Save to Supabase (already working)
+  await uploadAndInsert(meta, state.cv, state.certs);
+
+  // 2️⃣ Send to HubSpot (SAME logic as contact form)
+  await fetch('/hubspot-submit.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      type: 'career',
+      full_name: meta.full_name,
+      email: meta.email,
+      phone: meta.phone,
+      job_applied_for: meta.role,
+      location: meta.location,
+      cover_note: meta.cover_note
+    })
+  });
+
+  msg('Application submitted.', true);
+  form.reset();
+  state={cv:null, certs:[]};
+  renderCV(); 
+  renderCerts(); 
+  validate();
+
+}catch(err){
+  console.error(err);
+  msg(err.message || 'Submission failed.');
+}
+
+
   });
 
   validate();
 </script>
-
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/147841447.js"></script>
+<!-- End of HubSpot Embed Code -->
 <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
 </body>
 </html>

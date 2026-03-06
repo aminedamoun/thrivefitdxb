@@ -1,0 +1,570 @@
+<!-- ============================================================
+FILE: /pages/blog/index.html
+ROUTE: /blog
+TITLE: ThriveFit DXB Blog | Gym Training Tips in Dubai
+
+FIXES IN THIS VERSION:
+- Mobile menu typography consistent for ALL items (Services + Blog included)
+- Services submenu improved (spacing, padding, borders, consistent font)
+- Services accordion toggles + / − and closes smoothly
+- Desktop dropdown + strong nav-link styling preserved
+============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ThriveFit DXB Blog | Gym Training Tips in Dubai</title>
+  <meta name="description" content="Gym training tips in Dubai from ThriveFit DXB. Strength training, fat loss, routines, and coaching insights from expert personal trainers in Dubai." />
+  <link rel="canonical" href="https://thrivefitdxb.ae/blog" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17906639561">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17906639561');
+</script>
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '828303913602520');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=828303913602520&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+  <style>
+    @keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeInScale { from {opacity:0; transform:scale(.96);} to {opacity:1; transform:scale(1);} }
+    .animate-on-scroll { opacity: 0; }
+    .animate-on-scroll.animate-fadeInUp { animation: fadeInUp .8s ease-out forwards; }
+    .animate-on-scroll.animate-fadeInScale { animation: fadeInScale .8s ease-out forwards; }
+
+    :root { --nav-h: 92px; }
+
+    /* ===== DESKTOP NAV: enforce consistent typography ===== */
+    #navbar .nav-link{
+      appearance: none !important;
+      background: transparent !important;
+      border: 0 !important;
+      font: inherit !important;
+      color: inherit !important;
+      cursor: pointer !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      text-transform: uppercase !important;
+      font-weight: 600 !important;
+      letter-spacing: .5px !important;
+      line-height: 1 !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: .5rem !important;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+    }
+
+    #navbar{
+      background: rgba(0,0,0,.96) !important;
+      backdrop-filter: blur(10px) !important;
+      border-bottom: 1px solid rgba(255,255,255,.06) !important;
+      z-index: 9999 !important;
+    }
+
+    .page-top-pad { padding-top: var(--nav-h) !important; }
+    #navbar .nav-services { position: relative !important; }
+
+    /* ===== DESKTOP DROPDOWN ===== */
+    #navbar .desktop-dropdown{
+      position: absolute !important;
+      top: calc(100% + 12px) !important;
+      left: 50% !important;
+      transform: translateX(-50%) translateY(8px) !important;
+      display: block !important;
+      width: 340px !important;
+      padding: 18px 22px !important;
+      border-radius: 16px !important;
+      background: rgba(0,0,0,0.95) !important;
+      border: 1px solid rgba(255,255,255,0.12) !important;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.55) !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transition: opacity .2s ease, transform .2s ease, visibility .2s ease !important;
+      z-index: 10000 !important;
+    }
+    #navbar .nav-services.show .desktop-dropdown{
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: translateX(-50%) translateY(0) !important;
+    }
+    #navbar .desktop-dropdown a{
+      display: block !important;
+      padding: 10px 0 !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      letter-spacing: .5px !important;
+      text-transform: uppercase !important;
+      color: #fff !important;
+      text-decoration: none !important;
+      transition: color .15s ease, padding-left .15s ease !important;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+    }
+    #navbar .desktop-dropdown a:hover{
+      color: #f5d28a !important;
+      padding-left: 6px !important;
+    }
+
+    /* ===== MOBILE MENU (FIXED TYPOGRAPHY + SUBMENU) ===== */
+    .tf-mobile-menu{
+      position: absolute !important;
+      top: 100% !important;
+      left: 0 !important;
+      right: 0 !important;
+      background: rgba(0,0,0,0.96) !important;
+      backdrop-filter: blur(14px) !important;
+      border-top: 1px solid rgba(255,255,255,0.08) !important;
+      z-index: 9998 !important;
+    }
+
+    /* Base style: applies to BOTH <a> and <button> */
+    #tf-mobile-menu .tf-mobile-link,
+    #tf-mobile-menu .tf-mobile-services-btn{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 12px 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      text-decoration: none;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    #tf-mobile-menu .tf-mobile-link { justify-content: flex-start; }
+    #tf-mobile-menu .tf-mobile-link:hover,
+    #tf-mobile-menu .tf-mobile-services-btn:hover { color: #f5d28a; }
+
+    /* Nice divider between mobile items */
+    #tf-mobile-menu .tf-mobile-link,
+    #tf-mobile-menu .tf-mobile-services-btn{
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Submenu panel */
+    #tf-mobile-services-panel{
+      margin-top: 6px;
+      padding: 10px 0 6px 14px;
+      border-left: 2px solid rgba(245,210,138,0.35);
+    }
+
+    #tf-mobile-services-panel a{
+      display: block;
+      padding: 10px 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,0.75);
+    }
+    #tf-mobile-services-panel a:hover{ color: #fff; }
+
+    /* + / − toggle */
+    .tf-mobile-toggle{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(245,210,138,0.12);
+      border: 1px solid rgba(245,210,138,0.25);
+      color: #f5d28a;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    /* Blog thumbnails size */
+    .blog-thumb { max-height: 220px; }
+    @media (min-width: 1024px){ .blog-thumb { max-height: 240px; } }
+  </style>
+
+  <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fsportcoach1836back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.16"></script>
+  <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2"></script>
+</head>
+
+<body class="bg-black text-white overflow-x-hidden">
+
+<!-- =========================== NAVBAR ========================== -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <a href="/" aria-label="Home">
+        <img
+          src="/assets/images/logo.png"
+          class="h-12 w-auto object-contain tf-logo-loading"
+          alt="ThriveFit DXB logo"
+          decoding="async"
+          fetchpriority="high"
+          data-tf-logo
+        />
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/" class="nav-link text-white hover:text-primary">HOME</a>
+        <a href="/about" class="nav-link text-gray hover:text-primary">ABOUT US</a>
+
+        <div class="relative nav-services">
+          <button class="nav-link text-gray hover:text-primary nav-services-btn"
+                  aria-expanded="false" aria-controls="services-dd" type="button">
+            SERVICES
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+
+          <div id="services-dd" class="desktop-dropdown" role="menu" aria-label="Services menu">
+            <a href="/gym-personal-training">GYM PERSONAL TRAINING</a>
+            <a href="/at-home-training">AT-HOME TRAINING</a>
+            <a href="/outdoor-training">OUTDOOR TRAINING</a>
+            <a href="/corporate-fitness">CORPORATE FITNESS</a>
+            <a href="/children-fitness">CHILDREN FITNESS</a>
+            <a href="/facility-management">FACILITY MANAGEMENT</a>
+          </div>
+        </div>
+
+        <a href="/transformation" class="nav-link text-gray hover:text-primary">TRANSFORMATION</a>
+        <a href="/career" class="nav-link text-gray hover:text-primary">CAREER</a>
+        <a href="/blog" class="nav-link text-white hover:text-primary">BLOG</a>
+        <a href="/contact" class="nav-link text-gray hover:text-primary">CONTACT</a>
+      </div>
+
+      <a href="/contact" class="hidden md:block bg-primary text-black font-cta text-lg px-8 py-3 rounded-lg">START TODAY</a>
+
+      <button class="tf-hamburger md:hidden text-white" aria-label="Open menu" aria-expanded="false" aria-controls="tf-mobile-menu" type="button">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== MOBILE MENU ===== -->
+  <div id="tf-mobile-menu" class="tf-mobile-menu hidden md:hidden">
+    <div class="container mx-auto px-6 py-6 flex flex-col">
+      <a href="/" class="tf-mobile-link text-white hover:text-primary">HOME</a>
+      <a href="/about" class="tf-mobile-link text-gray hover:text-primary">ABOUT US</a>
+
+      <button class="tf-mobile-services-btn text-gray hover:text-primary tf-mobile-services-btn"
+              aria-expanded="false" aria-controls="tf-mobile-services-panel" type="button">
+        <span>SERVICES</span>
+        <span class="tf-mobile-toggle" aria-hidden="true">+</span>
+      </button>
+
+      <div id="tf-mobile-services-panel" class="hidden tf-mobile-services-panel">
+        <a href="/gym-personal-training">GYM PERSONAL TRAINING</a>
+        <a href="/at-home-training">AT-HOME TRAINING</a>
+        <a href="/outdoor-training">OUTDOOR TRAINING</a>
+        <a href="/corporate-fitness">CORPORATE FITNESS</a>
+        <a href="/children-fitness">CHILDREN FITNESS</a>
+        <a href="/facility-management">FACILITY MANAGEMENT</a>
+      </div>
+
+      <a href="/transformation" class="tf-mobile-link text-gray hover:text-primary">TRANSFORMATION</a>
+      <a href="/career" class="tf-mobile-link text-gray hover:text-primary">CAREER</a>
+      <a href="/blog" class="tf-mobile-link text-white hover:text-primary">BLOG</a>
+      <a href="/contact" class="tf-mobile-link text-gray hover:text-primary">CONTACT</a>
+
+      <a href="/contact" class="bg-primary text-black font-cta text-lg px-8 py-3 rounded-lg text-center mt-5">
+        START TODAY
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================ HERO =========================== -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden page-top-pad">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black z-10"></div>
+    <picture>
+      <source media="(max-width: 767px)" srcset="/assets/images/Thrive_Fit_234.webp" type="image/webp" />
+      <img
+        src="/assets/images/personal-trainer-dubai.webp"
+        alt="ThriveFit DXB Facility Dubai"
+        class="w-full h-full object-cover"
+        width="1920"
+        height="1080"
+        loading="eager"
+        decoding="sync"
+        fetchpriority="high"
+      />
+    </picture>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-20">
+    <div class="max-w-4xl mx-auto text-center space-y-6 animate-on-scroll" data-animation="fadeInUp">
+      <div class="inline-block">
+        <span class="tier-badge">Our Story</span>
+      </div>
+
+      <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+        ThriveFit DXB Blog <br />
+        <span class="text-gradient-gold">Training Tips for Dubai</span>
+        <br />Strength • Fat Loss • Routines
+      </h1>
+
+      <p class="text-lg md:text-xl text-gray max-w-3xl mx-auto leading-relaxed">
+        Simple, proven advice from our coaches: gym training, fat loss strategies, and weekly routines you can actually follow in Dubai.
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 max-w-3xl mx-auto">
+        <div class="text-center p-4 rounded-lg bg-blue-950/30 backdrop-blur-sm border border-blue-800/20">
+          <div class="text-2xl font-headline font-extrabold text-primary mb-1">30+</div>
+          <div class="text-xs text-gray">Years Combined</div>
+        </div>
+        <div class="text-center p-4 rounded-lg bg-blue-950/30 backdrop-blur-sm border border-blue-800/20">
+          <div class="text-2xl font-headline font-extrabold text-primary mb-1">500+</div>
+          <div class="text-xs text-gray">Clients Coached</div>
+        </div>
+        <div class="text-center p-4 rounded-lg bg-blue-950/30 backdrop-blur-sm border border-blue-800/20">
+          <div class="text-2xl font-headline font-extrabold text-primary mb-1">15+</div>
+          <div class="text-xs text-gray">Certifications</div>
+        </div>
+        <div class="text-center p-4 rounded-lg bg-blue-950/30 backdrop-blur-sm border border-blue-800/20">
+          <div class="text-2xl font-headline font-extrabold text-primary mb-1">98%</div>
+          <div class="text-xs text-gray">Success Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce" aria-hidden="true">
+    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- ======================= BLOG POSTS GRID ===================== -->
+<section class="py-20 bg-gradient-to-b from-black via-secondary/10 to-black">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+      <!-- POST 1 -->
+      <article class="group animate-on-scroll" data-animation="fadeInScale" data-delay="100">
+        <div class="relative bg-gradient-to-b from-blue-950 to-black backdrop-blur-md border border-blue-800/30 rounded-3xl overflow-hidden hover:border-blue-700/50 transition-all duration-500 hover:-translate-y-2">
+          <div class="relative overflow-hidden aspect-[4/3] blog-thumb">
+            <img src="/assets/images/personal-trainer-dubai.webp"
+                 alt="Beginner Strength Training in Dubai Gyms"
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/45 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="bg-primary text-black font-cta text-xs px-4 py-2 rounded-full tracking-wider">STRENGTH</span>
+            </div>
+          </div>
+
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-4 text-sm text-gray">
+              <span>Feb 2026</span><span>•</span><span>8 min read</span><span>•</span><span class="text-primary/90">Personal Trainer Dubai</span>
+            </div>
+
+            <h2 class="font-headline text-2xl font-extrabold mb-4 text-white group-hover:text-primary transition-colors">
+              Beginner Strength Training in Dubai Gyms: The Simple Plan That Works
+            </h2>
+
+            <p class="text-gray mb-6 leading-relaxed">
+              A beginner-friendly gym plan to build strength, improve posture, and support fat loss — designed for busy Dubai schedules.
+            </p>
+
+            <a href="/blog/beginner-strength-training-dubai-gyms" class="text-primary hover:text-primary/80 font-semibold text-sm flex items-center gap-2 transition-colors">
+              Read More
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- POST 2 -->
+      <article class="group animate-on-scroll" data-animation="fadeInScale" data-delay="200">
+        <div class="relative bg-gradient-to-b from-blue-950 to-black backdrop-blur-md border border-blue-800/30 rounded-3xl overflow-hidden hover:border-blue-700/50 transition-all duration-500 hover:-translate-y-2">
+          <div class="relative overflow-hidden aspect-[4/3] blog-thumb">
+            <img src="/assets/images/personal-trainers-dubai.webp"
+                 alt="Cardio vs Weights for Fat Loss in Dubai"
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/45 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="bg-primary text-black font-cta text-xs px-4 py-2 rounded-full tracking-wider">FAT LOSS</span>
+            </div>
+          </div>
+
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-4 text-sm text-gray">
+              <span>Feb 2026</span><span>•</span><span>7 min read</span><span>•</span><span class="text-primary/90">Dubai Gyms</span>
+            </div>
+
+            <h2 class="font-headline text-2xl font-extrabold mb-4 text-white group-hover:text-primary transition-colors">
+              Cardio vs Weights for Fat Loss: What Actually Works in Dubai
+            </h2>
+
+            <p class="text-gray mb-6 leading-relaxed">
+              A practical breakdown of what to do each week (and what to eat) to lose fat without burning out in Dubai’s lifestyle.
+            </p>
+
+            <a href="/blog/cardio-vs-weights-fat-loss-dubai" class="text-primary hover:text-primary/80 font-semibold text-sm flex items-center gap-2 transition-colors">
+              Read More
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- POST 3 -->
+      <article class="group animate-on-scroll" data-animation="fadeInScale" data-delay="300">
+        <div class="relative bg-gradient-to-b from-blue-950 to-black backdrop-blur-md border border-blue-800/30 rounded-3xl overflow-hidden hover:border-blue-700/50 transition-all duration-500 hover:-translate-y-2">
+          <div class="relative overflow-hidden aspect-[4/3] blog-thumb">
+            <img src="/assets/images/personal-training-dubai.webp"
+                 alt="Best gym routine for busy professionals in Dubai"
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/45 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="bg-primary text-black font-cta text-xs px-4 py-2 rounded-full tracking-wider">ROUTINE</span>
+            </div>
+          </div>
+
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-4 text-sm text-gray">
+              <span>Feb 2026</span><span>•</span><span>6 min read</span><span>•</span><span class="text-primary/90">Gym Personal Training</span>
+            </div>
+
+            <h2 class="font-headline text-2xl font-extrabold mb-4 text-white group-hover:text-primary transition-colors">
+              Best Gym Routine for Busy Professionals in Dubai (2–4 Sessions/Week)
+            </h2>
+
+            <p class="text-gray mb-6 leading-relaxed">
+              A time-efficient program you can stick to: weekly templates, exercise selection, and progression rules.
+            </p>
+
+            <a href="/blog/best-gym-routine-busy-professionals-dubai" class="text-primary hover:text-primary/80 font-semibold text-sm flex items-center gap-2 transition-colors">
+              Read More
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================== FOOTER ========================== -->
+<!-- Keep your existing footer here (unchanged) -->
+<!-- (If you want, paste your footer below or tell me where it lives and I’ll merge it cleanly.) -->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* DESKTOP SERVICES DROPDOWN */
+  (function() {
+    const root = document.querySelector("#navbar .nav-services");
+    if(!root) return;
+    const btn = root.querySelector(".nav-services-btn");
+    const dropdown = root.querySelector(".desktop-dropdown");
+    if(!btn || !dropdown) return;
+
+    const open = () => { root.classList.add("show"); btn.setAttribute("aria-expanded","true"); };
+    const close = () => { root.classList.remove("show"); btn.setAttribute("aria-expanded","false"); };
+
+    btn.addEventListener("click", e => { e.stopPropagation(); root.classList.contains("show") ? close() : open(); });
+    document.addEventListener("click", e => { if (!root.contains(e.target)) close(); });
+    document.addEventListener("keydown", e => { if(e.key==="Escape") close(); });
+  })();
+
+  /* MOBILE MENU OPEN/CLOSE */
+  (function() {
+    const menu = document.getElementById("tf-mobile-menu");
+    const btn = document.querySelector(".tf-hamburger");
+    if(!menu || !btn) return;
+
+    const hide = () => { menu.classList.add("hidden"); btn.setAttribute("aria-expanded","false"); };
+    const show = () => { menu.classList.remove("hidden"); btn.setAttribute("aria-expanded","true"); };
+
+    btn.addEventListener("click", e => { e.stopPropagation(); menu.classList.contains("hidden") ? show() : hide(); });
+    document.addEventListener("click", e => { if (!menu.contains(e.target) && !btn.contains(e.target)) hide(); });
+    document.addEventListener("keydown", e => { if(e.key==="Escape") hide(); });
+  })();
+
+  /* MOBILE SERVICES ACCORDION (FIXED +/−) */
+  (function() {
+    const btn = document.querySelector(".tf-mobile-services-btn");
+    const panel = document.getElementById("tf-mobile-services-panel");
+    const toggleIcon = btn?.querySelector(".tf-mobile-toggle");
+    if(!btn || !panel) return;
+
+    const setState = (open) => {
+      panel.classList.toggle("hidden", !open);
+      btn.setAttribute("aria-expanded", String(open));
+      if (toggleIcon) toggleIcon.textContent = open ? "−" : "+";
+    };
+
+    btn.addEventListener("click", () => {
+      const willOpen = panel.classList.contains("hidden");
+      setState(willOpen);
+    });
+
+    // default closed
+    setState(false);
+  })();
+
+  /* Scroll animations */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const type = el.getAttribute("data-animation") || "fadeInUp";
+      const delay = parseInt(el.getAttribute("data-delay") || "0", 10);
+      setTimeout(() => el.classList.add(`animate-${type}`), delay);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".animate-on-scroll").forEach(el => observer.observe(el));
+});
+</script>
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/147841447.js"></script>
+<!-- End of HubSpot Embed Code -->
+</body>
+</html>

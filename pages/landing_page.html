@@ -12,7 +12,16 @@
   <meta name="theme-color" content="#000000"/>
   <meta name="geo.region" content="AE-DU"/>
   <meta name="geo.placename" content="Dubai, United Arab Emirates"/>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17906639561">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'AW-17906639561');
+</script>
   <!-- Optional (not used by Google, but harmless for some platforms) -->
   <meta name="keywords" content="personal trainer dubai, personal training dubai, personal coach dubai, gym personal trainer dubai, in-home personal trainer dubai, at home personal training dubai, outdoor personal trainer dubai, fat loss dubai, strength training dubai, body transformation dubai, corporate fitness dubai, children fitness dubai"/>
 
@@ -20,7 +29,23 @@
   <link rel="canonical" href="https://thrivefitdxb.ae/"/>
   <link rel="alternate" href="https://thrivefitdxb.ae/" hreflang="en-ae"/>
   <link rel="alternate" href="https://thrivefitdxb.com/" hreflang="x-default"/>
-
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '828303913602520');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=828303913602520&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
   <!-- OpenGraph / Twitter -->
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="ThriveFit DXB"/>
@@ -427,6 +452,7 @@
 
         <a href="/transformation" class="nav-link text-gray hover:text-primary">TRANSFORMATION</a>
         <a href="/career" class="nav-link text-gray hover:text-primary">CAREER</a>
+        <a href="/blog" class="nav-link text-white hover:text-primary">Blog</a>
         <a href="/contact" class="nav-link text-gray hover:text-primary">CONTACT</a>
       </div>
 
@@ -468,6 +494,7 @@
 
       <a href="/transformation" class="tf-mobile-link text-gray hover:text-primary">Transformation</a>
       <a href="/career" class="tf-mobile-link text-gray hover:text-primary">Career</a>
+      <a href="/blog" class="nav-link text-white hover:text-primary">Blog</a>
       <a href="/contact" class="tf-mobile-link text-gray hover:text-primary">Contact</a>
 
       <a href="/contact" class="bg-primary text-black font-cta text-lg px-8 py-3 rounded-lg text-center mt-3">
@@ -947,7 +974,7 @@
       </h2>
 
       <p class="text-gray text-base md:text-lg max-w-2xl mx-auto animate-on-scroll" data-animation="fadeInUp" data-delay="200">
-        Enter your details to estimate a realistic timeline and training frequency with a personal trainer in Dubai.
+        Enter your details to estimate a realistic timeline and calories for your goal.
       </p>
     </div>
 
@@ -956,7 +983,19 @@
       <div class="relative animate-on-scroll" data-animation="fadeInLeft">
         <div class="absolute inset-0 bg-gradient-to-br from-secondary/50 to-secondary/10 rounded-3xl blur-xl"></div>
         <div class="relative bg-secondary/30 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 md:p-8">
+
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            <!-- GOAL (NEW) -->
+            <label class="block sm:col-span-2">
+              <span class="text-xs text-gray uppercase tracking-widest">Goal</span>
+              <select id="tf_goalType" class="mt-2 w-full rounded-xl bg-black/40 border border-white/10 px-4 py-3 text-white">
+                <option value="lose" selected>Lose Fat</option>
+                <option value="gain">Gain Muscle / Weight</option>
+                <option value="maintain">Maintain / Recomp</option>
+              </select>
+            </label>
+
             <label class="block">
               <span class="text-xs text-gray uppercase tracking-widest">Gender</span>
               <select id="tf_gender" class="mt-2 w-full rounded-xl bg-black/40 border border-white/10 px-4 py-3 text-white">
@@ -984,7 +1023,7 @@
             </label>
 
             <label class="block">
-              <span class="text-xs text-gray uppercase tracking-widest">Goal weight (kg)</span>
+              <span class="text-xs text-gray uppercase tracking-widest">Target weight (kg)</span>
               <input id="tf_goalWeight" type="number" value="75" min="30" max="250"
                      class="mt-2 w-full rounded-xl bg-black/40 border border-white/10 px-4 py-3 text-white" />
             </label>
@@ -992,10 +1031,10 @@
             <label class="block">
               <span class="text-xs text-gray uppercase tracking-widest">Activity level</span>
               <select id="tf_activity" class="mt-2 w-full rounded-xl bg-black/40 border border-white/10 px-4 py-3 text-white">
-                <option value="1.2">Sedentary (desk job)</option>
-                <option value="1.375">Lightly active (1–2 workouts/week)</option>
-                <option value="1.55" selected>Moderately active (3–4 workouts/week)</option>
-                <option value="1.725">Very active (5–6 workouts/week)</option>
+                <option value="1.2">Sedentary</option>
+                <option value="1.375">Lightly Active</option>
+                <option value="1.55" selected>Moderately Active</option>
+                <option value="1.725">Very Active</option>
               </select>
             </label>
 
@@ -1023,7 +1062,7 @@
           </div>
 
           <p class="mt-4 text-xs text-gray/80 leading-relaxed">
-            Estimates are for guidance only. Your real timeline depends on consistency, sleep, stress, nutrition, and training quality.
+            Estimates are guidance only. Your real results depend on consistency, sleep, stress, nutrition, and training quality.
           </p>
         </div>
       </div>
@@ -1043,7 +1082,7 @@
                 <span id="tf_weeks">—</span> weeks
               </p>
               <p class="text-gray text-sm mt-2">
-                Based on a sustainable weekly pace.
+                Based on a sustainable pace for your goal.
               </p>
             </div>
 
@@ -1053,7 +1092,7 @@
                 <span id="tf_plan">—</span>
               </p>
               <p class="text-gray text-sm mt-2">
-                This is the most effective weekly frequency for your target.
+                A realistic weekly setup for your target.
               </p>
             </div>
 
@@ -1063,7 +1102,7 @@
                 <span id="tf_calories">—</span> kcal/day
               </p>
               <p class="text-gray text-sm mt-2">
-                Includes your activity level and a modest deficit.
+                Uses your activity level and a goal-based adjustment.
               </p>
             </div>
 
@@ -1074,7 +1113,7 @@
                 SEND MY RESULT
               </a>
               <p class="mt-3 text-xs text-gray text-center">
-                Want it personalised? We’ll adjust this with your schedule, injuries, and goal priority.
+                Want it personalised? We’ll adjust this to your schedule, injuries, and goal priority.
               </p>
             </div>
           </div>
@@ -1084,6 +1123,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- Meet the Coaches -->
 <section class="py-12 bg-gradient-to-b from-blue-950 via-blue-900/30 to-black">
@@ -1373,7 +1413,13 @@
           Elite personal trainers coming to your home, office, gym, or outdoor space in Dubai. No guesswork. Real results.
         </p>
 
-        <div class="flex items-center gap-4">
+        <!-- Visitor Counter (NEW) -->
+        <div class="mt-6 text-gray text-sm flex items-center gap-2">
+          <span class="text-white/80 font-semibold">Visitors:</span>
+          <span id="tf_visitorCount" class="text-primary font-bold">—</span>
+        </div>
+
+        <div class="flex items-center gap-4 mt-6">
           <a href="https://www.facebook.com/people/Thrive-Fit-Dxb/61584039750159/" class="text-gray hover:text-primary transition-colors" aria-label="Facebook">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
@@ -1444,6 +1490,27 @@
   </div>
 </footer>
 
+<!-- Visitor Counter Script (NEW) -->
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const el = document.getElementById("tf_visitorCount");
+  if (!el) return;
+
+  try {
+    const res = await fetch("/counter.php", { cache: "no-store" });
+    const data = await res.json();
+    if (data && data.ok && typeof data.count === "number") {
+      el.textContent = data.count.toLocaleString();
+    } else {
+      el.textContent = "—";
+    }
+  } catch {
+    el.textContent = "—";
+  }
+});
+</script>
+
+
 <!-- ============================================================ -->
 <!-- =============================== JS ========================== -->
 <!-- ============================================================ -->
@@ -1461,25 +1528,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* NAV GLASS ON SCROLL */
   const nav = document.getElementById("navbar");
-  const updateNav = () => nav.classList.toggle("nav-scrolled", window.scrollY > 8);
-  updateNav();
-  window.addEventListener("scroll", updateNav, { passive: true });
+  if (nav) {
+    const updateNav = () => nav.classList.toggle("nav-scrolled", window.scrollY > 8);
+    updateNav();
+    window.addEventListener("scroll", updateNav, { passive: true });
+  }
 
   /* DESKTOP DROPDOWN */
   (function() {
     const root = document.querySelector(".nav-services");
-    if(!root) return;
+    if (!root) return;
     const btn = root.querySelector(".nav-services-btn");
     const dropdown = root.querySelector(".desktop-dropdown");
+    if (!btn || !dropdown) return;
 
     const open = () => { root.classList.add("show"); btn.setAttribute("aria-expanded","true"); };
     const close = () => { root.classList.remove("show"); btn.setAttribute("aria-expanded","false"); };
 
-    btn.addEventListener("click", e => { e.stopPropagation(); root.classList.contains("show") ? close() : open(); });
-    document.addEventListener("click", e => { if (!root.contains(e.target)) close(); });
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      root.classList.contains("show") ? close() : open();
+    });
+
+    document.addEventListener("click", e => {
+      if (!root.contains(e.target)) close();
+    });
+
     btn.addEventListener("keydown", e => {
-      if(e.key==="Escape") close();
-      if(e.key==="ArrowDown"){
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowDown") {
         e.preventDefault();
         open();
         dropdown.querySelector("a")?.focus();
@@ -1491,21 +1568,30 @@ document.addEventListener("DOMContentLoaded", () => {
   (function() {
     const menu = document.getElementById("tf-mobile-menu");
     const btn = document.querySelector(".tf-hamburger");
-    if(!menu || !btn) return;
+    if (!menu || !btn) return;
 
     const hide = () => { menu.classList.add("hidden"); btn.setAttribute("aria-expanded","false"); };
     const show = () => { menu.classList.remove("hidden"); btn.setAttribute("aria-expanded","true"); };
 
-    btn.addEventListener("click", e => { e.stopPropagation(); menu.classList.contains("hidden") ? show() : hide(); });
-    document.addEventListener("click", e => { if (!menu.contains(e.target) && !btn.contains(e.target)) hide(); });
-    document.addEventListener("keydown", e => { if(e.key==="Escape") hide(); });
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      menu.classList.contains("hidden") ? show() : hide();
+    });
+
+    document.addEventListener("click", e => {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) hide();
+    });
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") hide();
+    });
   })();
 
   /* MOBILE SERVICES ACCORDION */
   (function() {
     const btn = document.querySelector(".tf-mobile-services-btn");
     const panel = document.getElementById("tf-mobile-services-panel");
-    if(!btn || !panel) return;
+    if (!btn || !panel) return;
 
     btn.addEventListener("click", () => {
       const willOpen = panel.classList.contains("hidden");
@@ -1518,7 +1604,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
-      if(href === "#") return;
+      if (!href || href === "#") return;
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
@@ -1528,7 +1614,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* Scroll Animations: apply once (reduces layout work) */
+  /* Scroll Animations: apply once */
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -1541,15 +1627,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
   document.querySelectorAll('.animate-on-scroll').forEach(el => io.observe(el));
-});
-</script>
-
-<!-- Removed dhws-data-injector script to fix 404 console error -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
 
   /* ===================== CALCULATOR ===================== */
   (function () {
+    const btn = document.getElementById("tf_calcBtn");
+    if (!btn) return; // page doesn’t have calculator
+
+    const goalType = document.getElementById("tf_goalType");
     const gender = document.getElementById("tf_gender");
     const age = document.getElementById("tf_age");
     const height = document.getElementById("tf_height");
@@ -1558,71 +1642,124 @@ document.addEventListener("DOMContentLoaded", () => {
     const activity = document.getElementById("tf_activity");
     const sessions = document.getElementById("tf_sessions");
     const sessionsValue = document.getElementById("tf_sessionsValue");
-    const btn = document.getElementById("tf_calcBtn");
 
     const weeksEl = document.getElementById("tf_weeks");
     const planEl = document.getElementById("tf_plan");
     const caloriesEl = document.getElementById("tf_calories");
     const waLink = document.getElementById("tf_whatsappLink");
 
-    if (!btn) return;
+    // Hard fail-safe if any required element missing:
+    if (!goalType || !gender || !age || !height || !weight || !goalWeight || !activity || !sessions ||
+        !sessionsValue || !weeksEl || !planEl || !caloriesEl || !waLink) {
+      console.warn("Calculator: missing one or more required elements.");
+      return;
+    }
 
     const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
+    // Mifflin-St Jeor
     const bmr = ({ g, a, h, w }) => {
       const base = 10 * w + 6.25 * h - 5 * a;
       return g === "male" ? base + 5 : base - 161;
     };
 
-    const recommendPlan = (kgToLose, sessionsPerWeek) => {
-      if (kgToLose <= 4) return sessionsPerWeek >= 2 ? "2–3x/week (tighten & tone)" : "2x/week (starter plan)";
-      if (kgToLose <= 10) return sessionsPerWeek >= 3 ? "3x/week (best for fat loss)" : "3x/week (recommended)";
-      return sessionsPerWeek >= 4 ? "4x/week (accelerated transformation)" : "4x/week (recommended for big goals)";
+    const recommendPlan = (goal, deltaKgAbs, s) => {
+      if (goal === "maintain") {
+        return s >= 3 ? "3x/week (maintenance + strength)" : "2–3x/week (stay consistent)";
+      }
+      if (goal === "lose") {
+        if (deltaKgAbs <= 4) return s >= 2 ? "2–3x/week (tighten & tone)" : "2x/week (starter plan)";
+        if (deltaKgAbs <= 10) return s >= 3 ? "3x/week (best for fat loss)" : "3x/week (recommended)";
+        return s >= 4 ? "4x/week (accelerated fat loss)" : "4x/week (recommended for big goals)";
+      }
+      // gain
+      if (deltaKgAbs <= 3) return s >= 3 ? "3–4x/week (lean muscle gain)" : "3x/week (recommended)";
+      if (deltaKgAbs <= 6) return s >= 4 ? "4x/week (hypertrophy focus)" : "4x/week (recommended)";
+      return s >= 5 ? "5x/week (advanced build phase)" : "4–5x/week (recommended)";
     };
 
     const calc = () => {
+      const goal = goalType.value; // lose | gain | maintain
       const g = gender.value;
+
       const a = clamp(parseFloat(age.value || 0), 14, 80);
       const h = clamp(parseFloat(height.value || 0), 120, 220);
       const w = clamp(parseFloat(weight.value || 0), 30, 250);
       const gw = clamp(parseFloat(goalWeight.value || 0), 30, 250);
+
       const act = parseFloat(activity.value || 1.2);
       const s = parseInt(sessions.value || "3", 10);
 
       sessionsValue.textContent = String(s);
 
-      const kgToLose = Math.max(0, w - gw);
-
-      let weeklyLoss = 0.45;
-      if (kgToLose >= 12) weeklyLoss = 0.6;
-      if (kgToLose <= 5) weeklyLoss = 0.35;
-
-      weeklyLoss += (s - 3) * 0.05;
-      weeklyLoss = clamp(weeklyLoss, 0.25, 0.85);
-
-      const estWeeks = kgToLose === 0 ? 0 : Math.ceil(kgToLose / weeklyLoss);
+      const delta = gw - w;
+      const deltaAbs = Math.abs(delta);
 
       const BMR = bmr({ g, a, h, w });
       const tdee = BMR * act;
 
-      let deficit = 450 + (s - 3) * 80;
-      deficit = clamp(deficit, 300, 750);
+      let estWeeks = 0;
+      let targetCalories = Math.round(clamp(tdee, 1200, 3600));
 
-      const target = Math.round(clamp(tdee - deficit, 1200, 3200));
-      const plan = recommendPlan(kgToLose, s);
+      if (goal === "lose") {
+        const kgToLose = Math.max(0, w - gw);
 
-      weeksEl.textContent = estWeeks === 0 ? "0" : String(estWeeks);
+        let weeklyLoss = 0.45;
+        if (kgToLose >= 12) weeklyLoss = 0.60;
+        if (kgToLose <= 5) weeklyLoss = 0.35;
+
+        weeklyLoss += (s - 3) * 0.05;
+        weeklyLoss = clamp(weeklyLoss, 0.25, 0.85);
+
+        estWeeks = kgToLose === 0 ? 0 : Math.ceil(kgToLose / weeklyLoss);
+
+        let deficit = 450 + (s - 3) * 80;
+        deficit = clamp(deficit, 300, 750);
+
+        targetCalories = Math.round(clamp(tdee - deficit, 1200, 3200));
+      }
+
+      if (goal === "gain") {
+        const kgToGain = Math.max(0, gw - w);
+
+        let weeklyGain = 0.20;
+        if (kgToGain >= 6) weeklyGain = 0.25;
+        if (kgToGain <= 2) weeklyGain = 0.15;
+
+        weeklyGain += (s - 3) * 0.02;
+        weeklyGain = clamp(weeklyGain, 0.12, 0.35);
+
+        estWeeks = kgToGain === 0 ? 0 : Math.ceil(kgToGain / weeklyGain);
+
+        let surplus = 250 + (s - 3) * 60;
+        surplus = clamp(surplus, 150, 500);
+
+        targetCalories = Math.round(clamp(tdee + surplus, 1400, 3800));
+      }
+
+      if (goal === "maintain") {
+        estWeeks = 0;
+        targetCalories = Math.round(clamp(tdee, 1200, 3600));
+      }
+
+      const plan = recommendPlan(goal, deltaAbs, s);
+
+      weeksEl.textContent = String(estWeeks);
       planEl.textContent = plan;
-      caloriesEl.textContent = String(target);
+      caloriesEl.textContent = String(targetCalories);
+
+      const goalLabel = goal === "lose" ? "Lose Fat" : goal === "gain" ? "Gain Muscle/Weight" : "Maintain/Recomp";
 
       const msg =
-        `Hi ThriveFit DXB, I used your Transformation Calculator.%0A` +
+        `Hi ThriveFit DXB, I used your Transformation Calculator.%0A%0A` +
+        `Goal: ${encodeURIComponent(goalLabel)}%0A` +
         `Gender: ${g}%0A` +
         `Age: ${a}%0AHeight: ${h} cm%0A` +
-        `Current: ${w} kg → Goal: ${gw} kg (%0Alose ${kgToLose.toFixed(1)} kg)%0A` +
+        `Current: ${w} kg → Target: ${gw} kg%0A` +
+        `Change: ${delta >= 0 ? "+" : ""}${delta.toFixed(1)} kg%0A` +
         `Sessions/week: ${s}%0A` +
         `Estimated timeline: ${estWeeks} weeks%0A` +
-        `Estimated calories: ${target} kcal/day%0A` +
+        `Estimated calories: ${targetCalories} kcal/day%0A` +
         `Recommended plan: ${encodeURIComponent(plan)}%0A%0A` +
         `Can you personalise this for me?`;
 
@@ -1634,12 +1771,16 @@ document.addEventListener("DOMContentLoaded", () => {
       sessionsValue.textContent = sessions.value;
     });
 
+    goalType.addEventListener("change", calc);
     btn.addEventListener("click", calc);
+
     calc();
   })();
-
 });
 </script>
 
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/147841447.js"></script>
+<!-- End of HubSpot Embed Code -->
 </body>
 </html>
